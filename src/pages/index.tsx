@@ -4,6 +4,7 @@ import { supabase } from "../util/supabase";
 import { useState, useEffect } from "react";
 import { InputForm } from "../components/parts/Form/Input";
 import { formatISO } from "date-fns";
+import { Button } from "../components/parts/Button/Button";
 
 const Home: NextPage = () => {
   const [text, setText] = useState("");
@@ -57,21 +58,22 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      <InputForm inputs={inputList} />
-
-      {/* <InputForm inputs={inputList} /> */}
-      <button
-        onClick={() => {
-          addTodo();
-          setTitle("");
-          setText("");
-        }}
-      >
-        送信
-      </button>
-      {todos.map((todo) => {
-        return <div key={todo.id}>{todo.title}</div>;
-      })}
+      <div>
+        <InputForm inputs={inputList} />
+        <Button
+          disabled={!text || !title}
+          btnText="送信"
+          type="other"
+          onClick={() => {
+            addTodo();
+            setTitle("");
+            setText("");
+          }}
+        />
+        {todos.map((todo) => {
+          return <div key={todo.id}>{todo.title}</div>;
+        })}
+      </div>
     </Layout>
   );
 };

@@ -2,6 +2,8 @@ import { NextPage } from "next";
 import { useForm } from "react-hook-form";
 import { Form } from "../components/parts/Form/Form";
 import { supabase } from "../util/supabase";
+import { Layout } from "../components/layout";
+import Link from "next/link";
 
 type IForm = {
   email: string;
@@ -20,13 +22,25 @@ const Signin: NextPage = () => {
   ];
 
   return (
-    <>
+    <Layout>
       <Form
         onSubmit={handleSubmit(handleSignin)}
         inputList={inputList}
         buttonText="サインイン"
       />
-    </>
+      <div className="flex justify-around">
+        <Link href="/signup">
+          <a className="text-darkSushi dark:text-sushi underline hover:no-underline">
+            新規登録
+          </a>
+        </Link>
+        <Link href="/forgot">
+          <a className="text-darkSushi dark:text-sushi underline hover:no-underline">
+            パスワードをお忘れですか？
+          </a>
+        </Link>
+      </div>
+    </Layout>
   );
 };
 
