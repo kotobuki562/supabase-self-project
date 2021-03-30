@@ -12,10 +12,12 @@
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "@supabase/supabase-js": "^1.7.3",
+    "@supabase/ui": "github:supabase/ui",
     "framer-motion": "^4.0.3",
     "next": "10.0.9",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-hook-form": "^6.15.5"
   },
   "devDependencies": {
     "@types/node": "^14.14.37",
