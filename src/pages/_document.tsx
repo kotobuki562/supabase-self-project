@@ -10,8 +10,7 @@ class MyDocument extends Document {
   render(): JSX.Element {
     return (
       <Html lang="ja">
-        <Head>
-        </Head>
+        <Head></Head>
         <body className="transition delay-150 duration-300 ease-in-out bg-gray-200 dark:bg-gray-800">
           <Main />
           <NextScript />
