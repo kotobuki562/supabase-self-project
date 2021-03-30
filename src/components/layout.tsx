@@ -53,7 +53,7 @@ export const Layout: VFC<Props> = (props) => {
         <meta name="twitter:image" content={meta.cardImage} />
       </Head>
       <Header />
-        {props.children}
+      {props.children}
       <Footer />
     </>
   );
