@@ -13,9 +13,13 @@ export const InputForm: VFC<Input> = ({ inputs }) => {
   return (
     <div>
       {inputs.map((props) => (
-        <label key={props.name}>
+        <label className="flex flex-col" key={props.name}>
           <span>{props.name}</span>
-          <input onChange={props.onChange} {...props} />
+          <input
+            className="bg-gray-200 dark:bg-gray-700 py-1 px-2 rounded"
+            onChange={props.onChange}
+            {...props}
+          />
         </label>
       ))}
     </div>

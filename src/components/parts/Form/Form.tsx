@@ -28,7 +28,7 @@ export const Form: VFC<IProps> = ({ onSubmit, buttonText, inputList }) => {
         ))}
         <button
           type="submit"
-          className="flex items-center shadow dark:border-sushi border-darkSushi border-2 rounded-full  px-4 py-2 dark:text-sushi text-darkSushi hover:bg-darkSushi dark:hover:bg-sushi hover:text-white dark:hover:text-black transition delay-150 duration-300"
+          className="flex items-center shadow dark:border-sushi border-darkSushi border-2 rounded-full  px-4 py-2 dark:text-sushi text-darkSushi hover:bg-darkSushi dark:hover:bg-sushi hover:text-white dark:hover:text-black transition duration-200"
         >
           {buttonText}
         </button>
