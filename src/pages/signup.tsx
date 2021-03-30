@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import { useForm } from "react-hook-form";
 import { Form } from "../components/parts/Form/Form";
 import { supabase } from "../util/supabase";
+import { Layout } from "../components/layout";
 
 type IForm = {
   email: string;
@@ -22,13 +23,13 @@ const Signup: NextPage = () => {
   ];
 
   return (
-    <div>
+    <Layout>
       <Form
         onSubmit={handleSubmit(handleSignup)}
         inputList={inputList}
         buttonText="サインアップ"
       />
-    </div>
+    </Layout>
   );
 };
 

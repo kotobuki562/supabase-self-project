@@ -2,6 +2,7 @@ import { AppProps } from "next/app";
 import { supabase } from "../util/supabase";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { ThemeProvider } from "next-themes";
 import "../styles/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
 
@@ -34,12 +35,11 @@ export default function App({ Component, pageProps }: AppProps) {
       {loading ? (
         <h1>loading...</h1>
       ) : (
-        <>
-          <button onClick={() => supabase.auth.signOut()}>ログアウト</button>
+        <ThemeProvider attribute="class">
           <ChakraProvider resetCSS={false}>
             <Component {...pageProps} />
           </ChakraProvider>
-        </>
+        </ThemeProvider>
       )}
     </>
   );
