@@ -18,16 +18,16 @@ export const Header = () => {
         <div>header</div>
         <div className="flex items-center">
           <button
-            className="inline-block"
+            className="inline-block outline-none"
             onClick={(e) => {
               e.preventDefault();
               switchTheme();
             }}
           >
             {theme === "light" ? (
-              <img className="w-20" src={icons.sunIcon} alt="sun" />
+              <img className="w-20 outline-none" src={icons.sunIcon} alt="sun" />
             ) : (
-              <img className="w-20" src={icons.moonIcon} alt="moon" />
+              <img className="w-20 outline-none" src={icons.moonIcon} alt="moon" />
             )}
           </button>
           {user ? (

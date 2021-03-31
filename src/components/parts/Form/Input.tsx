@@ -16,7 +16,7 @@ export const InputForm: VFC<Input> = ({ inputs }) => {
         <label className="flex flex-col" key={props.name}>
           <span>{props.name}</span>
           <input
-            className="bg-gray-200 dark:bg-gray-700 py-1 px-2 rounded"
+            className="bg-white dark:bg-dark py-1 px-2 rounded border border-fontDark outline-none"
             onChange={props.onChange}
             {...props}
           />
