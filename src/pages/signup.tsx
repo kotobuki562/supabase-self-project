@@ -17,9 +17,19 @@ const Signup: NextPage = () => {
   };
 
   const inputList = [
-    { type: "email", name: "email 📨", ref: register },
-    { type: "password", name: "password 🔑", ref: register },
-    { type: "password", name: "passwordConf 🔑", ref: register },
+    { type: "email", name: "email", label: "email 📨", ref: register },
+    {
+      type: "password",
+      name: "password",
+      label: "password 🔑",
+      ref: register,
+    },
+    {
+      type: "password",
+      name: "passwordConf",
+      label: "password 🔑",
+      ref: register,
+    },
   ];
 
   return (

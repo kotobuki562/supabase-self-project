@@ -13,6 +13,7 @@ export const Header = () => {
   const switchTheme = async () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
+
   return (
     <header>
       <nav className="flex justify-between items-center px-4 py-2">
@@ -48,13 +49,13 @@ export const Header = () => {
           >
             {theme === "light" ? (
               <img
-                className="w-10 sm:w-14 outline-none"
+                className="w-14 sm:w-20 outline-none"
                 src={icons.sunIcon}
                 alt="sun"
               />
             ) : (
               <img
-                className="w-10 sm:w-14 outline-none"
+                className="w-14 sm:w-20 outline-none"
                 src={icons.moonIcon}
                 alt="moon"
               />

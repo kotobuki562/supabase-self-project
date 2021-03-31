@@ -8,6 +8,7 @@ type IProps = {
     ref?: any;
     type: string;
     value?: any;
+    label: string;
     onChange?: any;
   }[];
 };
@@ -18,7 +19,7 @@ export const Form: VFC<IProps> = ({ onSubmit, buttonText, inputList }) => {
       <form onSubmit={onSubmit} className="flex flex-col items-center">
         {inputList.map((props) => (
           <label key={props.name} className="flex flex-col items-center mb-4">
-            <span>{props.name}</span>
+            <span>{props.label}</span>
             <input
               className="bg-white dark:bg-dark py-1 px-2 rounded border border-fontDark outline-none"
               onChange={props.onChange}
