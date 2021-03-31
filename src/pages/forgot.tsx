@@ -16,7 +16,7 @@ const Forgot: NextPage = () => {
   };
 
   const inputList = [
-    { type: "email", name: "email", label: 'email 📨"', ref: register },
+    { type: "email", name: "email", label: "email 📨", ref: register },
   ];
 
   return (
