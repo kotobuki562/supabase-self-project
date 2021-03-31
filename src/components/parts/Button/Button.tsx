@@ -5,6 +5,7 @@ type Btninfo = {
   btnText: string;
   type: "agree" | "delete" | "other";
   onClick: any;
+  size: "sm" | "md" | "lg";
   disabled?: any;
 };
 export const Button: VFC<Btninfo> = (props) => {
@@ -13,7 +14,10 @@ export const Button: VFC<Btninfo> = (props) => {
       disabled={props.disabled}
       onClick={props.onClick}
       className={cc([
-        "font-semibold tracking-wide flex items-center border-2 rounded-full  px-4 py-2 transition duration-200 hover:text-white dark:hover:text-black outline-none",
+        "flex items-center font-semibold tracking-wide rounded-full transition duration-200 hover:text-white dark:hover:text-black outline-none",
+        props.size === "sm" ? "border-2 px-4 py-2 text-sm" : null,
+        props.size === "md" ? "border-2 px-4 py-2 text-base" : null,
+        props.size === "lg" ? "border-2 px-4 py-2 text-lg" : null,
         props.type === "other"
           ? "dark:border-sushi border-darkSushi dark:text-sushi text-darkSushi hover:bg-darkSushi dark:hover:bg-sushi"
           : null,
