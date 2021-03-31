@@ -21,7 +21,7 @@ export const Form: VFC<IProps> = ({ onSubmit, buttonText, inputList }) => {
           <label key={props.name} className="flex flex-col items-center mb-4">
             <span>{props.label}</span>
             <input
-              className="bg-white dark:bg-dark py-1 px-2 rounded border border-fontDark outline-none"
+              className="bg-white dark:bg-dark py-1 px-2 rounded border border-fontDark outline-none shadow-none"
               onChange={props.onChange}
               {...props}
             />
