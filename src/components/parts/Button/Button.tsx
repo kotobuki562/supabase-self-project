@@ -10,14 +10,16 @@ type Btninfo = {
 export const Button: VFC<Btninfo> = (props) => {
   return (
     <button
-    disabled={props.disabled}
-    onClick={props.onClick}
+      disabled={props.disabled}
+      onClick={props.onClick}
       className={cc([
-        'inline-block',
+        "inline-block font-semibold tracking-wide",
         props.type === "other"
           ? "flex items-center dark:border-sushi border-darkSushi border-2 rounded-full  px-4 py-2 dark:text-sushi text-darkSushi hover:bg-darkSushi dark:hover:bg-sushi hover:text-white dark:hover:text-black transition duration-200"
           : null,
-        props.type === 'delete' ? "flex items-center dark:border-red-400 border-red-600 border-2 rounded-full  px-4 py-2 dark:text-red-400 text-red-600 hover:bg-red-600 dark:hover:bg-red-400 hover:text-white dark:hover:text-black transition duration-200" : null,
+        props.type === "delete"
+          ? "flex items-center dark:border-red-500 border-red-600 border-2 rounded-full  px-4 py-2 dark:text-red-500 text-red-600 hover:bg-red-600 dark:hover:bg-red-500 hover:text-white dark:hover:text-black transition duration-200"
+          : null,
       ])}
     >
       {props.btnText}

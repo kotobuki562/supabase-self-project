@@ -16,6 +16,9 @@ module.exports = {
       colors: {
         sushi: "#76FADD",
         darkSushi: "#52BBA4",
+        dark: "#202020",
+        semiDark: "#2A2A2A",
+        fontDark: "#BBBBBB",
       },
     },
   },

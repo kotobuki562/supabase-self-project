@@ -11,7 +11,7 @@ class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head></Head>
-        <body className="transition duration-200 ease-in-out bg-white dark:bg-black dark:text-white">
+        <body className="transition duration-200 ease-in-out font-mono bg-white dark:bg-dark dark:text-fontDark">
           <Main />
           <NextScript />
         </body>

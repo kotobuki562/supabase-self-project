@@ -81,13 +81,13 @@ const Home: NextPage = () => {
           {todos.map((todo) => {
             return (
               <div
-                className="m-4 dark:bg-gray-700 bg-gray-200 border-2 border-gray-100 dark:border-gray-600 hover:border-darkSushi dark:hover:border-sushi rounded cursor-pointer"
+                className="m-4 px-2 dark:bg-semiDark bg-gray-200 border border-gray-100 dark:border-gray-600 hover:border-darkSushi dark:hover:border-sushi rounded cursor-pointer"
                 key={todo.id}
               >
                 <h3 className="py-1 px-2 border-b font-semibold border-gray-100 dark:border-gray-500">
                   {todo.title}
                 </h3>
-                <p className="py-1 px-2 font-light text-gray-500 dark:text-gray-400">{todo.text}</p>
+                <p className="py-1 px-2 font-light text-gray-500 dark:text-fontDark">{todo.text}</p>
               </div>
             );
           })}
