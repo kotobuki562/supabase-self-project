@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 import { InputForm } from "../components/parts/Form/Input";
 import { formatISO } from "date-fns";
 import { Button } from "../components/parts/Button/Button";
-import {useRouter} from 'next/router'
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [todos, setTodos] = useState<any[]>([]);
@@ -23,7 +23,6 @@ const Home: NextPage = () => {
       return console.log(error);
     }
   };
-  
 
   const addTodo = async () => {
     try {
@@ -36,7 +35,7 @@ const Home: NextPage = () => {
           updateAt: date,
         },
       ]);
-      return router.reload()
+      return router.reload();
     } catch (error) {
       return console.log(error);
     }
@@ -58,7 +57,7 @@ const Home: NextPage = () => {
   ];
 
   useEffect(() => {
-    getAllData()
+    getAllData();
   }, []);
 
   return (
@@ -70,6 +69,7 @@ const Home: NextPage = () => {
             disabled={!text || !title}
             btnText="送信"
             type="other"
+            size="sm"
             onClick={() => {
               addTodo();
               setTitle("");
@@ -81,13 +81,15 @@ const Home: NextPage = () => {
           {todos.map((todo) => {
             return (
               <div
-                className="m-4 px-2 dark:bg-semiDark bg-white border-2 border-fontDark hover:border-darkSushi dark:hover:border-sushi rounded cursor-pointer"
+                className="m-4 px-2 dark:bg-semiDark bg-white border sm:border-2 border-fontDark hover:border-darkSushi dark:hover:border-sushi rounded cursor-pointer"
                 key={todo.id}
               >
                 <h3 className="py-1 px-2 border-b font-semibold border-fontDark">
                   {todo.title}
                 </h3>
-                <p className="py-1 px-2 font-light text-gray-500 dark:text-fontDark">{todo.text}</p>
+                <p className="py-1 px-2 font-light text-gray-500 dark:text-fontDark">
+                  {todo.text}
+                </p>
               </div>
             );
           })}

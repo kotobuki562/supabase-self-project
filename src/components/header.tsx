@@ -3,7 +3,8 @@ import { useTheme } from "next-themes";
 import { supabase } from "../util/supabase";
 import { icons } from "../../public/Icon";
 import { useRouter } from "next/router";
-import {Button} from '../components/parts/Button/Button'
+import { Button } from "../components/parts/Button/Button";
+import Link from "next/link";
 
 export const Header = () => {
   const user = supabase.auth.user();
@@ -14,25 +15,51 @@ export const Header = () => {
   };
   return (
     <header>
-      <nav>
-        <div>header</div>
+      <nav className="flex justify-between items-center px-4 py-2">
+        {theme === "light" ? (
+          <Link href="/">
+            <a className="text-darkSushi dark:text-sushi text-base sm:text-lg">
+              emoji日記😊
+            </a>
+          </Link>
+        ) : (
+          <Link href="/">
+            <a className="text-darkSushi dark:text-sushi text-base sm:text-lg">
+              emoji日記😎
+            </a>
+          </Link>
+        )}
+
         <div className="flex items-center">
+          {user ? (
+            <Button
+              btnText="ログアウト"
+              type="delete"
+              size="sm"
+              onClick={() => supabase.auth.signOut()}
+            />
+          ) : null}
           <button
-            className="inline-block outline-none"
+            className="inline-block outline-none ml-4"
             onClick={(e) => {
               e.preventDefault();
               switchTheme();
             }}
           >
             {theme === "light" ? (
-              <img className="w-20 outline-none" src={icons.sunIcon} alt="sun" />
+              <img
+                className="w-10 sm:w-14 outline-none"
+                src={icons.sunIcon}
+                alt="sun"
+              />
             ) : (
-              <img className="w-20 outline-none" src={icons.moonIcon} alt="moon" />
+              <img
+                className="w-10 sm:w-14 outline-none"
+                src={icons.moonIcon}
+                alt="moon"
+              />
             )}
           </button>
-          {user ? (
-            <Button btnText="ログアウト" type="delete" onClick={()=>supabase.auth.signOut()} />
-          ) : null}
         </div>
       </nav>
     </header>

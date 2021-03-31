@@ -17,28 +17,30 @@ const Signin: NextPage = () => {
   };
 
   const inputList = [
-    { type: "email", name: "email", ref: register },
-    { type: "password", name: "password", ref: register },
+    { type: "email", name: "email 📨", ref: register },
+    { type: "password", name: "password 🔑", ref: register },
   ];
 
   return (
     <Layout>
-      <Form
-        onSubmit={handleSubmit(handleSignin)}
-        inputList={inputList}
-        buttonText="サインイン"
-      />
-      <div className="flex justify-around">
-        <Link href="/signup">
-          <a className="text-darkSushi dark:text-sushi underline hover:no-underline">
-            新規登録
-          </a>
-        </Link>
-        <Link href="/forgot">
-          <a className="text-darkSushi dark:text-sushi underline hover:no-underline">
-            パスワードをお忘れですか？
-          </a>
-        </Link>
+      <div className="flex flex-col justify-around">
+        <Form
+          onSubmit={handleSubmit(handleSignin)}
+          inputList={inputList}
+          buttonText="サインイン"
+        />
+        <div className="flex justify-around">
+          <Link href="/signup">
+            <a className="text-darkSushi dark:text-sushi underline hover:no-underline">
+              新規登録
+            </a>
+          </Link>
+          <Link href="/forgot">
+            <a className="text-darkSushi dark:text-sushi underline hover:no-underline">
+              パスワードをお忘れですか？
+            </a>
+          </Link>
+        </div>
       </div>
     </Layout>
   );

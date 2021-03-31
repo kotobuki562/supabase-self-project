@@ -17,18 +17,20 @@ const Signup: NextPage = () => {
   };
 
   const inputList = [
-    { type: "email", name: "email", ref: register },
-    { type: "password", name: "password", ref: register },
-    { type: "password", name: "passwordConf", ref: register },
+    { type: "email", name: "email 📨", ref: register },
+    { type: "password", name: "password 🔑", ref: register },
+    { type: "password", name: "passwordConf 🔑", ref: register },
   ];
 
   return (
     <Layout>
-      <Form
-        onSubmit={handleSubmit(handleSignup)}
-        inputList={inputList}
-        buttonText="サインアップ"
-      />
+      <div className="flex flex-col justify-center">
+        <Form
+          onSubmit={handleSubmit(handleSignup)}
+          inputList={inputList}
+          buttonText="サインアップ"
+        />
+      </div>
     </Layout>
   );
 };

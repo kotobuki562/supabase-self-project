@@ -15,15 +15,17 @@ const Forgot: NextPage = () => {
     supabase.auth.api.resetPasswordForEmail(email);
   };
 
-  const inputList = [{ type: "email", name: "email", ref: register }];
+  const inputList = [{ type: "email", name: "email 📨", ref: register }];
 
   return (
     <Layout>
-      <Form
-        onSubmit={handleSubmit(handleResetPassword)}
-        inputList={inputList}
-        buttonText="パスワードリセット"
-      />
+      <div className="flex flex-col justify-center">
+        <Form
+          onSubmit={handleSubmit(handleResetPassword)}
+          inputList={inputList}
+          buttonText="パスワードリセット"
+        />
+      </div>
     </Layout>
   );
 };
