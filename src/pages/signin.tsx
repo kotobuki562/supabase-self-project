@@ -17,8 +17,13 @@ const Signin: NextPage = () => {
   };
 
   const inputList = [
-    { type: "email", name: "email 📨", ref: register },
-    { type: "password", name: "password 🔑", ref: register },
+    { type: "email", name: "email", label: "email 📨", ref: register },
+    {
+      type: "password",
+      name: "password",
+      label: "password 🔑",
+      ref: register,
+    },
   ];
 
   return (

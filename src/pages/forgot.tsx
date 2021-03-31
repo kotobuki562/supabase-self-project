@@ -15,7 +15,9 @@ const Forgot: NextPage = () => {
     supabase.auth.api.resetPasswordForEmail(email);
   };
 
-  const inputList = [{ type: "email", name: "email 📨", ref: register }];
+  const inputList = [
+    { type: "email", name: "email", label: 'email 📨"', ref: register },
+  ];
 
   return (
     <Layout>
