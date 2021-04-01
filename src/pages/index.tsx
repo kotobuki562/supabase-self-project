@@ -11,6 +11,8 @@ const Home: NextPage = () => {
   const router = useRouter();
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
+  const [emoji, setEmoji] = useState("");
+  const [selectEmoji, setSelectEmoji] = useState("");
   const [todos, setTodos] = useState<any[]>([]);
   const date = formatISO(new Date());
   const user = supabase.auth?.user();
@@ -30,7 +32,6 @@ const Home: NextPage = () => {
         {
           title: title,
           text: text,
-          uid: user.id,
           createAt: date,
           updateAt: date,
         },
@@ -53,6 +54,13 @@ const Home: NextPage = () => {
       name: "text",
       value: text,
       onChange: (e) => setText(e.target.value),
+    },
+    {
+      type: "text",
+      name: "emoji",
+      value: emoji,
+      onChange: (e) => setEmoji(e.target.value),
+      leftIcon: "😊",
     },
   ];
 
