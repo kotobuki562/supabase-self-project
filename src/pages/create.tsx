@@ -64,8 +64,6 @@ const Create: NextPage = () => {
     },
   ];
 
-  console.log(category);
-
   return (
     <Layout>
       <div className="flex flex-col w-full px-4">
@@ -73,12 +71,7 @@ const Create: NextPage = () => {
         <div>
           <Button
             disabled={
-              !text ||
-              !title ||
-              !emoji ||
-              emoji.length > 2 ||
-              emoji.length === 1 ||
-              !category
+              !text || !title || !emoji || emoji.length !== 2 || !category
             }
             btnText="create"
             type="other"

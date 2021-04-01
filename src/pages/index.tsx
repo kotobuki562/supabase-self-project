@@ -3,6 +3,7 @@ import { Layout } from "../components/layout";
 import { supabase } from "../util/supabase";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Loading from "../components/parts/Loading/Loading";
 
 const Home: NextPage = () => {
   const [todos, setTodos] = useState<any[]>([]);
@@ -34,10 +35,7 @@ const Home: NextPage = () => {
           </Link>
         </div>
         {isLoading ? (
-          <div className="flex flex-col items-center justify-center h-full">
-            <p className="text-4xl animate-spin">🤔</p>
-            <p className="text-lg">Loading...</p>
-          </div>
+          <Loading />
         ) : (
           <div className="grid grid-cols-3 sm:grid-cols-5">
             {todos.map((todo) => {
