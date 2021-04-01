@@ -12,6 +12,7 @@ const Create: NextPage = () => {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [emoji, setEmoji] = useState("");
+  const [category, setCategory] = useState("");
   const date = formatISO(new Date());
   const addTodo = async () => {
     try {
@@ -20,6 +21,7 @@ const Create: NextPage = () => {
           title: title,
           text: text,
           emoji: emoji,
+          category: category,
           createAt: date,
           updateAt: date,
         },
@@ -48,10 +50,21 @@ const Create: NextPage = () => {
       name: "emoji",
       value: emoji,
       onChange: (e) => setEmoji(e.target.value),
-      leftIcon: "😊",
+      leftIcon: "🥝",
       placeholder: "emojiを一つだけ入力してください🙏",
     },
+    {
+      type: "text",
+      name: "category",
+      value: category,
+      onChange: (e) => setCategory(e.target.value),
+      placeholder: "今の気持ちは？🤔",
+      select: true,
+      selectValue: ["喜", "怒", "哀", "楽"],
+    },
   ];
+
+  console.log(category);
 
   return (
     <Layout>
@@ -64,7 +77,8 @@ const Create: NextPage = () => {
               !title ||
               !emoji ||
               emoji.length > 2 ||
-              emoji.length === 1
+              emoji.length === 1 ||
+              !category
             }
             btnText="create"
             type="other"
@@ -74,6 +88,7 @@ const Create: NextPage = () => {
               setTitle("");
               setText("");
               setEmoji("");
+              setCategory("");
             }}
           />
         </div>

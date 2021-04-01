@@ -1,4 +1,4 @@
-import { VFC } from "react";
+import { VFC, useState } from "react";
 import cc from "classcat";
 
 type Btninfo = {
