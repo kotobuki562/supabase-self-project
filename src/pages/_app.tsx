@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ThemeProvider } from "next-themes";
 import "../styles/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
+import Loading from "../components/parts/Loading/Loading";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { pathname, push } = useRouter();
@@ -33,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       {loading ? (
-        <h1>loading...</h1>
+        <Loading />
       ) : (
         <ThemeProvider attribute="class">
           <ChakraProvider resetCSS={false}>
