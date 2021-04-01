@@ -1,4 +1,5 @@
 import { VFC } from "react";
+import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 
 type Input = {
   inputs: {
@@ -6,6 +7,8 @@ type Input = {
     type: string;
     value: any;
     onChange: any;
+    leftIcon?: any;
+    select?: any;
   }[];
 };
 
@@ -15,11 +18,20 @@ export const InputForm: VFC<Input> = ({ inputs }) => {
       {inputs.map((props) => (
         <label className="flex flex-col" key={props.name}>
           <span>{props.name}</span>
-          <input
-            className="bg-white dark:bg-dark py-1 px-2 rounded border border-fontDark outline-none shadow-none"
-            onChange={props.onChange}
-            {...props}
-          />
+          <InputGroup>
+            {props.leftIcon ? (
+              <InputLeftElement
+                pointerEvents="none"
+                children={props.leftIcon}
+              />
+            ) : null}
+            <Input
+              focusBorderColor="gray.300"
+              className="bg-opacity-0 py-1 px-2 rounded border border-fontDark outline-none shadow-none"
+              onChange={props.onChange}
+              {...props}
+            />
+          </InputGroup>
         </label>
       ))}
     </div>
