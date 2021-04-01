@@ -15,9 +15,9 @@ export const Button: VFC<Btninfo> = (props) => {
       onClick={props.onClick}
       className={cc([
         "flex items-center font-semibold tracking-wide rounded-full transition duration-200 hover:text-white dark:hover:text-black outline-none",
-        props.size === "sm" ? "border-2 px-4 py-2 text-sm" : null,
-        props.size === "md" ? "border-2 px-4 py-2 text-base" : null,
-        props.size === "lg" ? "border-2 px-4 py-2 text-lg" : null,
+        props.size === "sm" ? "border-2 px-4 py-2 text-sm sm:text-base" : null,
+        props.size === "md" ? "border-2 px-4 py-2 text-base sm:text-lg" : null,
+        props.size === "lg" ? "border-2 px-4 py-2 text-lg sm:text-xl" : null,
         props.type === "other"
           ? "dark:border-sushi border-darkSushi dark:text-sushi text-darkSushi hover:bg-darkSushi dark:hover:bg-sushi"
           : null,
