@@ -19,13 +19,13 @@ export const Header = () => {
       <nav className="flex justify-between items-center px-4 py-2">
         {theme === "light" ? (
           <Link href="/">
-            <a className="text-darkSushi dark:text-sushi text-base sm:text-lg">
+            <a className="text-darkSushi dark:text-sushi text-xl font-semibold sm:text-2xl">
               emoji日記😊
             </a>
           </Link>
         ) : (
           <Link href="/">
-            <a className="text-darkSushi dark:text-sushi text-base sm:text-lg">
+            <a className="text-darkSushi dark:text-sushi text-xl font-semibold sm:text-2xl">
               emoji日記😎
             </a>
           </Link>
