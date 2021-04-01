@@ -8,7 +8,7 @@ type Input = {
     value: any;
     onChange: any;
     leftIcon?: any;
-    select?: any;
+    placeholder?: string;
   }[];
 };
 

@@ -6,13 +6,13 @@ import { InputForm } from "../components/parts/Form/Input";
 import { formatISO } from "date-fns";
 import { Button } from "../components/parts/Button/Button";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   const router = useRouter();
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [emoji, setEmoji] = useState("");
-  const [selectEmoji, setSelectEmoji] = useState("");
   const [todos, setTodos] = useState<any[]>([]);
   const date = formatISO(new Date());
   const user = supabase.auth?.user();
@@ -32,6 +32,7 @@ const Home: NextPage = () => {
         {
           title: title,
           text: text,
+          emoji: emoji,
           createAt: date,
           updateAt: date,
         },
@@ -61,6 +62,7 @@ const Home: NextPage = () => {
       value: emoji,
       onChange: (e) => setEmoji(e.target.value),
       leftIcon: "😊",
+      placeholder: "emojiを一つだけ入力してください🙏",
     },
   ];
 
@@ -74,7 +76,7 @@ const Home: NextPage = () => {
         <InputForm inputs={inputList} />
         <div>
           <Button
-            disabled={!text || !title}
+            disabled={!text || !title || emoji.length > 2}
             btnText="送信"
             type="other"
             size="sm"
@@ -82,23 +84,32 @@ const Home: NextPage = () => {
               addTodo();
               setTitle("");
               setText("");
+              setEmoji("");
             }}
           />
         </div>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid grid-cols-3 sm:grid-cols-5">
           {todos.map((todo) => {
             return (
-              <div
-                className="m-4 px-2 dark:bg-semiDark bg-white border sm:border-2 border-fontDark hover:border-darkSushi dark:hover:border-sushi rounded cursor-pointer"
-                key={todo.id}
-              >
-                <h3 className="py-1 px-2 border-b font-semibold border-fontDark">
-                  {todo.title}
-                </h3>
-                <p className="py-1 px-2 font-light text-gray-500 dark:text-fontDark">
-                  {todo.text}
-                </p>
-              </div>
+              <Link key={todo.id} href="#">
+                <a className="m-5 p-5 text-center text-4xl sm:text-4xl hover:bg-gray-100 dark:hover:bg-semiDark border-fontDark rounded-lg">
+                  {todo.emoji}
+                </a>
+              </Link>
+              // <div
+              //   className="m-4 px-2 dark:bg-semiDark bg-white border sm:border-2 border-fontDark hover:border-darkSushi dark:hover:border-sushi rounded cursor-pointer"
+              //   key={todo.id}
+              // >
+              //   <h3 className="py-1 px-2 border-b font-semibold border-fontDark">
+              //     {todo.title}
+              //   </h3>
+              //   <p className="py-1 px-2 font-light text-gray-500 dark:text-fontDark">
+              //     {todo.text}
+              //   </p>
+              //   <p className="py-1 px-2 font-light text-gray-500 dark:text-fontDark">
+              //     {todo.emoji}
+              //   </p>
+              // </div>
             );
           })}
         </div>
