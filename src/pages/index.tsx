@@ -27,27 +27,29 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <div className="flex flex-col w-full px-4">
-        <div className="flex">
-          <Link href="/create">
-            <a className="dark:border-sushi border-darkSushi dark:text-sushi text-darkSushi hover:bg-darkSushi dark:hover:bg-sushi border-2 px-4 py-2 text-sm sm:text-base flex items-center font-semibold tracking-wide rounded-full transition duration-200 hover:text-white dark:hover:text-black outline-none">
-              Let's create!
-            </a>
-          </Link>
-        </div>
         {isLoading ? (
           <Loading />
         ) : (
-          <div className="grid grid-cols-3 sm:grid-cols-5">
-            {todos.map((todo) => {
-              return (
-                <Link key={todo.id} href="#">
-                  <a className="m-5 p-5 transition duration-200 text-center text-4xl sm:text-4xl hover:bg-gray-100 dark:hover:bg-semiDark border-fontDark rounded-lg">
-                    {todo.emoji}
-                  </a>
-                </Link>
-              );
-            })}
-          </div>
+          <>
+            <div className="flex">
+              <Link href="/create">
+                <a className="dark:border-sushi border-darkSushi dark:text-sushi text-darkSushi hover:bg-darkSushi dark:hover:bg-sushi border-2 px-4 py-2 text-sm sm:text-base flex items-center font-semibold tracking-wide rounded-full transition duration-200 hover:text-white dark:hover:text-black outline-none">
+                  Let's create!
+                </a>
+              </Link>
+            </div>
+            <div className="grid grid-cols-3 sm:grid-cols-5">
+              {todos.map((todo) => {
+                return (
+                  <Link key={todo.id} href="#">
+                    <a className="m-5 p-5 transition duration-200 text-center text-4xl sm:text-4xl hover:bg-gray-100 dark:hover:bg-semiDark border-fontDark rounded-lg">
+                      {todo.emoji}
+                    </a>
+                  </Link>
+                );
+              })}
+            </div>
+          </>
         )}
       </div>
     </Layout>
