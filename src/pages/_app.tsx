@@ -32,16 +32,10 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <ThemeProvider attribute="class">
-          <ChakraProvider resetCSS={false}>
-            <Component {...pageProps} />
-          </ChakraProvider>
-        </ThemeProvider>
-      )}
-    </>
+    <ThemeProvider attribute="class">
+      <ChakraProvider resetCSS={false}>
+        {loading ? <Loading /> : <Component {...pageProps} />}
+      </ChakraProvider>
+    </ThemeProvider>
   );
 }
