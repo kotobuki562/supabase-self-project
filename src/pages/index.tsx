@@ -38,7 +38,7 @@ const Home: NextPage = () => {
                 </a>
               </Link>
             </div>
-            <div className="grid grid-cols-3 sm:grid-cols-5">
+            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7">
               {todos.map((todo) => {
                 return (
                   <Link key={todo.id} href="#">
