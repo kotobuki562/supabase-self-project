@@ -89,21 +89,22 @@ const Create: NextPage = () => {
       <div className="flex flex-col w-full px-4">
         <div className="border-sushi flex justify-between my-4">
           <span
-            className={cc(
-              name ? "p-1 w-full bg-sushi" : "p-1 w-full bg-fontDark"
-            )}
+            className={cc([
+              "p-1 w-full rounded-lg mr-2",
+              name ? "bg-sushi" : "bg-fontDark",
+            ])}
           ></span>
           <span
-            className={cc(
-              title && text ? "p-1 w-full bg-sushi" : "p-1 w-full bg-fontDark"
-            )}
+            className={cc([
+              "p-1 w-full rounded-lg mr-2",
+              text && title ? "bg-sushi" : "bg-fontDark",
+            ])}
           ></span>
           <span
-            className={cc(
-              emoji && category
-                ? "p-1 w-full bg-sushi"
-                : "p-1 w-full bg-fontDark"
-            )}
+            className={cc([
+              "p-1 w-full rounded-lg mr-2",
+              emoji.length == 2 && category ? "bg-sushi" : "bg-fontDark",
+            ])}
           ></span>
         </div>
         {switchName ? (
@@ -112,8 +113,8 @@ const Create: NextPage = () => {
             <div>
               <Button
                 disabled={!name}
-                btnText="next"
-                type="other"
+                btnText="next 👉"
+                type={!name ? null : "other"}
                 size="sm"
                 onClick={() => {
                   setSwitchName(false);
@@ -129,7 +130,7 @@ const Create: NextPage = () => {
             <div className="flex">
               <div className="mr-4">
                 <Button
-                  btnText="back"
+                  btnText="👈 back"
                   type="delete"
                   size="sm"
                   onClick={() => {
@@ -141,8 +142,8 @@ const Create: NextPage = () => {
               <div>
                 <Button
                   disabled={!text || !title}
-                  btnText="next"
-                  type="other"
+                  btnText="next 👉"
+                  type={!text || !title ? null : "other"}
                   size="sm"
                   onClick={() => {
                     setSwitchCintent(false);
@@ -159,7 +160,7 @@ const Create: NextPage = () => {
             <div className="flex">
               <div className="mr-4">
                 <Button
-                  btnText="back"
+                  btnText="👈 back"
                   type="delete"
                   size="sm"
                   onClick={() => {
@@ -178,8 +179,17 @@ const Create: NextPage = () => {
                     emoji.length !== 2 ||
                     !category
                   }
-                  btnText="create"
-                  type="other"
+                  btnText="create! 🎉"
+                  type={
+                    !name ||
+                    !text ||
+                    !title ||
+                    !emoji ||
+                    emoji.length !== 2 ||
+                    !category
+                      ? null
+                      : "other"
+                  }
                   size="sm"
                   onClick={() => {
                     addTodo();
