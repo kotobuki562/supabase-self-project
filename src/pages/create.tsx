@@ -55,12 +55,14 @@ const Create: NextPage = () => {
       name: "title",
       value: title,
       onChange: (e) => setTitle(e.target.value),
+      placeholder: "日記のタイトルは？🤔",
     },
     {
       type: "text",
       name: "text",
       value: text,
       onChange: (e) => setText(e.target.value),
+      placeholder: "詳細は？🤔",
     },
   ];
 
@@ -78,7 +80,7 @@ const Create: NextPage = () => {
       name: "category",
       value: category,
       onChange: (e) => setCategory(e.target.value),
-      placeholder: "今の気持ちは？🤔",
+      placeholder: "その時の心境は？🤔",
       select: true,
       selectValue: ["😊", "😡", "😭", "😌", "😐"],
     },
@@ -88,24 +90,58 @@ const Create: NextPage = () => {
     <Layout>
       <div className="flex flex-col w-full px-4">
         <div className="border-sushi flex justify-between my-4">
-          <span
-            className={cc([
-              "p-1 w-full rounded-lg mr-2",
-              name ? "bg-sushi" : "bg-fontDark",
-            ])}
-          ></span>
-          <span
-            className={cc([
-              "p-1 w-full rounded-lg mr-2",
-              text && title ? "bg-sushi" : "bg-fontDark",
-            ])}
-          ></span>
-          <span
-            className={cc([
-              "p-1 w-full rounded-lg mr-2",
-              emoji.length == 2 && category ? "bg-sushi" : "bg-fontDark",
-            ])}
-          ></span>
+          <div className="p-1 w-full flex flex-col items-center">
+            <span
+              className={cc([
+                "p-1 w-full rounded-lg mx-1",
+                name ? "bg-darkSushi dark:bg-sushi" : "bg-fontDark",
+              ])}
+            ></span>
+            <p
+              className={cc([
+                name ? "text-darkSushi dark:text-sushi" : "text-fontDark",
+              ])}
+            >
+              Step 1 😊
+            </p>
+          </div>
+          <div className="p-1 w-full flex flex-col items-center">
+            <span
+              className={cc([
+                "p-1 w-full rounded-lg mx-1",
+                text && title ? "bg-darkSushi dark:bg-sushi" : "bg-fontDark",
+              ])}
+            ></span>
+            <p
+              className={cc([
+                text && title
+                  ? "text-darkSushi dark:text-sushi"
+                  : "text-fontDark",
+              ])}
+            >
+              Step 2 😎
+            </p>
+          </div>
+
+          <div className="p-1 w-full flex flex-col items-center">
+            <span
+              className={cc([
+                "p-1 w-full rounded-lg mx-1",
+                emoji.length == 2 && category
+                  ? "bg-darkSushi dark:bg-sushi"
+                  : "bg-fontDark",
+              ])}
+            ></span>
+            <p
+              className={cc([
+                emoji.length == 2 && category
+                  ? "text-darkSushi dark:text-sushi"
+                  : "text-fontDark",
+              ])}
+            >
+              Finish! 🥳
+            </p>
+          </div>
         </div>
         {switchName ? (
           <div>
