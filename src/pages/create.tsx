@@ -14,6 +14,9 @@ const Create: NextPage = () => {
   const [emoji, setEmoji] = useState("");
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
+  const [switchName, setSwitchName] = useState(true);
+  const [switchContent, setSwitchCintent] = useState(false);
+  const [switchEmoji, setSwitchEmoji] = useState(false);
 
   const date = formatISO(new Date());
   const addTodo = async () => {
@@ -35,7 +38,7 @@ const Create: NextPage = () => {
     }
   };
 
-  const inputList = [
+  const inputNameList = [
     {
       type: "name",
       name: "name",
@@ -43,6 +46,9 @@ const Create: NextPage = () => {
       onChange: (e) => setName(e.target.value),
       placeholder: "お名前は？🤔",
     },
+  ];
+
+  const contentList = [
     {
       type: "title",
       name: "title",
@@ -55,6 +61,9 @@ const Create: NextPage = () => {
       value: text,
       onChange: (e) => setText(e.target.value),
     },
+  ];
+
+  const emojiList = [
     {
       type: "text",
       name: "emoji",
@@ -77,29 +86,93 @@ const Create: NextPage = () => {
   return (
     <Layout>
       <div className="flex flex-col w-full px-4">
-        <InputForm inputs={inputList} />
-        <div>
-          <Button
-            disabled={
-              !name ||
-              !text ||
-              !title ||
-              !emoji ||
-              emoji.length !== 2 ||
-              !category
-            }
-            btnText="create"
-            type="other"
-            size="sm"
-            onClick={() => {
-              addTodo();
-              setTitle("");
-              setText("");
-              setEmoji("");
-              setCategory("");
-            }}
-          />
-        </div>
+        {switchName ? (
+          <div>
+            <InputForm inputs={inputNameList} />
+            <div>
+              <Button
+                disabled={!name}
+                btnText="next"
+                type="other"
+                size="sm"
+                onClick={() => {
+                  setSwitchName(false);
+                  setSwitchCintent(true);
+                }}
+              />
+            </div>
+          </div>
+        ) : null}
+        {switchContent ? (
+          <div>
+            <InputForm inputs={contentList} />
+            <div className="flex">
+              <div className="mr-4">
+                <Button
+                  btnText="back"
+                  type="delete"
+                  size="sm"
+                  onClick={() => {
+                    setSwitchName(true);
+                    setSwitchCintent(false);
+                  }}
+                />
+              </div>
+              <div>
+                <Button
+                  disabled={!text || !title}
+                  btnText="next"
+                  type="other"
+                  size="sm"
+                  onClick={() => {
+                    setSwitchCintent(false);
+                    setSwitchEmoji(true);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        ) : null}
+        {switchEmoji ? (
+          <div>
+            <InputForm inputs={emojiList} />
+            <div className="flex">
+              <div className="mr-4">
+                <Button
+                  btnText="back"
+                  type="delete"
+                  size="sm"
+                  onClick={() => {
+                    setSwitchCintent(true);
+                    setSwitchEmoji(false);
+                  }}
+                />
+              </div>
+              <div>
+                <Button
+                  disabled={
+                    !name ||
+                    !text ||
+                    !title ||
+                    !emoji ||
+                    emoji.length !== 2 ||
+                    !category
+                  }
+                  btnText="create"
+                  type="other"
+                  size="sm"
+                  onClick={() => {
+                    addTodo();
+                    setTitle("");
+                    setText("");
+                    setEmoji("");
+                    setCategory("");
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        ) : null}
       </div>
     </Layout>
   );
