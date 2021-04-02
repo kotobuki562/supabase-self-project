@@ -19,7 +19,7 @@ export const Form: VFC<IProps> = ({ onSubmit, buttonText, inputList }) => {
     <div>
       <form onSubmit={onSubmit} className="flex flex-col items-center">
         {inputList.map((props) => (
-          <label key={props.name} className="flex flex-col items-center mb-4">
+          <label key={props.name} className="flex flex-col items-center mb-8">
             <span>{props.label}</span>
             <Input
               focusBorderColor="gray.300"
@@ -31,7 +31,7 @@ export const Form: VFC<IProps> = ({ onSubmit, buttonText, inputList }) => {
         ))}
         <button
           type="submit"
-          className="flex items-center dark:border-sushi border-darkSushi border-2 rounded-full  px-4 py-2 dark:text-sushi text-darkSushi hover:bg-darkSushi dark:hover:bg-sushi hover:text-white dark:hover:text-black transition duration-200"
+          className="flex items-center font-semibold dark:border-sushi border-darkSushi border-2 rounded-full  px-4 py-2 dark:text-sushi text-darkSushi hover:bg-darkSushi dark:hover:bg-sushi hover:text-white dark:hover:text-black transition duration-200"
         >
           {buttonText}
         </button>

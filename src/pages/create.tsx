@@ -13,11 +13,14 @@ const Create: NextPage = () => {
   const [title, setTitle] = useState("");
   const [emoji, setEmoji] = useState("");
   const [category, setCategory] = useState("");
+  const [name, setName] = useState("");
+
   const date = formatISO(new Date());
   const addTodo = async () => {
     try {
       await supabase.from("lists").insert([
         {
+          name: name,
           title: title,
           text: text,
           emoji: emoji,
@@ -33,6 +36,13 @@ const Create: NextPage = () => {
   };
 
   const inputList = [
+    {
+      type: "name",
+      name: "name",
+      value: name,
+      onChange: (e) => setName(e.target.value),
+      placeholder: "お名前は？🤔",
+    },
     {
       type: "title",
       name: "title",
@@ -60,7 +70,7 @@ const Create: NextPage = () => {
       onChange: (e) => setCategory(e.target.value),
       placeholder: "今の気持ちは？🤔",
       select: true,
-      selectValue: ["喜", "怒", "哀", "楽"],
+      selectValue: ["😊", "😡", "😭", "😌", "😐"],
     },
   ];
 
@@ -71,7 +81,12 @@ const Create: NextPage = () => {
         <div>
           <Button
             disabled={
-              !text || !title || !emoji || emoji.length !== 2 || !category
+              !name ||
+              !text ||
+              !title ||
+              !emoji ||
+              emoji.length !== 2 ||
+              !category
             }
             btnText="create"
             type="other"

@@ -18,7 +18,7 @@ export const InputForm: VFC<Input> = ({ inputs }) => {
   return (
     <div>
       {inputs.map((props) => (
-        <label className="flex flex-col mb-2 sm:mb-4" key={props.name}>
+        <label className="flex flex-col mb-4" key={props.name}>
           <span>{props.name}</span>
           <InputGroup>
             {props.leftIcon ? (
@@ -32,6 +32,7 @@ export const InputForm: VFC<Input> = ({ inputs }) => {
                 focusBorderColor="gray.300"
                 placeholder={props.placeholder}
                 value={props.value}
+                className="bg-opacity-0 py-1 px-2 w-full rounded border border-fontDark outline-none shadow-none"
                 onChange={props.onChange}
               >
                 {props.selectValue.map((item) => {
