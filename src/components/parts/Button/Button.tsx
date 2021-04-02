@@ -22,7 +22,10 @@ export const Button: VFC<Btninfo> = (props) => {
           ? "dark:border-sushi border-darkSushi dark:text-sushi text-darkSushi hover:bg-darkSushi dark:hover:bg-sushi"
           : null,
         props.type === "delete"
-          ? "dark:border-red-500 border-red-600 dark:text-red-500 text-red-600 hover:bg-red-600 dark:hover:bg-red-500"
+          ? "border-red-600 dark:text-red-500 text-red-600 hover:bg-red-600 dark:hover:bg-red-500"
+          : null,
+        props.disabled
+          ? "border-fontDark text-fontDark hover:bg-fontDark"
           : null,
       ])}
     >
