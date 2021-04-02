@@ -6,6 +6,7 @@ import { InputForm } from "../components/parts/Input/Input";
 import { formatISO } from "date-fns";
 import { Button } from "../components/parts/Button/Button";
 import { useRouter } from "next/router";
+import cc from "classcat";
 
 const Create: NextPage = () => {
   const router = useRouter();
@@ -86,6 +87,25 @@ const Create: NextPage = () => {
   return (
     <Layout>
       <div className="flex flex-col w-full px-4">
+        <div className="border-sushi flex justify-between my-4">
+          <span
+            className={cc(
+              name ? "p-1 w-full bg-sushi" : "p-1 w-full bg-fontDark"
+            )}
+          ></span>
+          <span
+            className={cc(
+              title && text ? "p-1 w-full bg-sushi" : "p-1 w-full bg-fontDark"
+            )}
+          ></span>
+          <span
+            className={cc(
+              emoji && category
+                ? "p-1 w-full bg-sushi"
+                : "p-1 w-full bg-fontDark"
+            )}
+          ></span>
+        </div>
         {switchName ? (
           <div>
             <InputForm inputs={inputNameList} />
