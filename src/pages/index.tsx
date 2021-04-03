@@ -7,7 +7,7 @@ import Loading from "../components/parts/Loading/Loading";
 
 export async function getStaticProps() {
   const lists = await supabase.from("lists").select("*");
-  const posts = lists.data;
+  const posts = await lists.data;
   return {
     props: {
       posts,

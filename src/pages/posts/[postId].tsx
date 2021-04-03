@@ -7,9 +7,8 @@ import type { GetStaticPaths } from "next";
 export const getStaticPaths: GetStaticPaths<{
   postId: string | null;
 }> = async () => {
-  const posts = [];
-  const { data: lists, error } = await supabase.from("lists").select("*");
-  await posts.push(lists);
+  const lists = await supabase.from("lists").select("*");
+  const posts = await lists.data;
   const paths = posts.map((post) => {
     return { params: { postId: `${post.id}` } };
   });
