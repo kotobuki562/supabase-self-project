@@ -14,57 +14,77 @@ export const Header = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  return (
-    <header>
-      <nav className="flex justify-between items-center px-4 py-2">
-        {theme === "light" ? (
+  if (theme === "light") {
+    return (
+      <header>
+        <nav className="flex justify-between items-center px-4 py-2">
           <Link href="/">
             <a className="text-darkSushi dark:text-sushi text-xl font-semibold sm:text-2xl">
               emoji日記😊
             </a>
           </Link>
-        ) : (
-          <Link href="/">
-            <a className="text-darkSushi dark:text-sushi text-xl font-semibold sm:text-2xl">
-              emoji日記😎
-            </a>
-          </Link>
-        )}
-
-        <div className="flex items-center">
-          {user ? (
-            <Button
-              btnText="ログアウト"
-              type="delete"
-              size="sm"
-              onClick={() => supabase.auth.signOut()}
-            />
-          ) : null}
-          <button
-            className="inline-block outline-none ml-4"
-            onClick={(e) => {
-              e.preventDefault();
-              switchTheme();
-            }}
-          >
-            {theme === "light" ? (
+          <div className="flex items-center">
+            {user ? (
+              <Button
+                btnText="ログアウト"
+                type="delete"
+                size="sm"
+                onClick={() => supabase.auth.signOut()}
+              />
+            ) : null}
+            <button
+              className="inline-block outline-none ml-4"
+              onClick={(e) => {
+                e.preventDefault();
+                switchTheme();
+              }}
+            >
               <img
                 className="w-14 sm:w-20 outline-none"
                 src={icons.sunIcon}
                 alt="sun"
               />
-            ) : (
+            </button>
+          </div>
+        </nav>
+      </header>
+    );
+  } else {
+    return (
+      <header>
+        <nav className="flex justify-between items-center px-4 py-2">
+          <Link href="/">
+            <a className="text-darkSushi dark:text-sushi text-xl font-semibold sm:text-2xl">
+              emoji日記😎
+            </a>
+          </Link>
+          <div className="flex items-center">
+            {user ? (
+              <Button
+                btnText="ログアウト"
+                type="delete"
+                size="sm"
+                onClick={() => supabase.auth.signOut()}
+              />
+            ) : null}
+            <button
+              className="inline-block outline-none ml-4"
+              onClick={(e) => {
+                e.preventDefault();
+                switchTheme();
+              }}
+            >
               <img
                 className="w-14 sm:w-20 outline-none"
                 src={icons.moonIcon}
                 alt="moon"
               />
-            )}
-          </button>
-        </div>
-      </nav>
-    </header>
-  );
+            </button>
+          </div>
+        </nav>
+      </header>
+    );
+  }
 };
 
 export default Header;
