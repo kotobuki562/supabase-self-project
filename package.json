@@ -25,7 +25,8 @@
     "prettier": "^2.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-hook-form": "^6.15.5"
+    "react-hook-form": "^6.15.5",
+    "react-share": "^4.4.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.37",

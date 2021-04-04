@@ -38,7 +38,7 @@ export const Layout: VFC<Props> = (props) => {
         <meta content={meta.description} name="description" />
         <meta
           property="og:url"
-          content={`https://plgn-foods.com${router.asPath}`}
+          content={`https://emoji-diary.vercel.app${router.asPath}`}
         />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={meta.title} />

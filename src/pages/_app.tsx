@@ -10,27 +10,27 @@ import Loading from "../components/parts/Loading/Loading";
 export default function App({ Component, pageProps }: AppProps) {
   const { pathname, push } = useRouter();
   // ローディングはtrueにすれば続行する
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  // supabase.auth.onAuthStateChange((_, session) => {
-  //   if (session?.user && (pathname === "/signin" || pathname === "/signup")) {
-  //     push("/");
-  //   } else if (!session?.user && pathname !== "/signup") {
-  //     push("/signin");
-  //   }
-  // });
+  supabase.auth.onAuthStateChange((_, session) => {
+    if (session?.user && (pathname === "/signin" || pathname === "/signup")) {
+      push("/");
+    } else if (!session?.user && pathname !== "/signup") {
+      push("/signin");
+    }
+  });
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const user = supabase.auth.user();
-  //     if (user && (pathname === "/signin" || pathname === "/signup")) {
-  //       await push("/");
-  //     } else if (!user && pathname !== "/signup") {
-  //       await push("/signin");
-  //     }
-  //     setLoading(false);
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      const user = supabase.auth.user();
+      if (user && (pathname === "/signin" || pathname === "/signup")) {
+        await push("/");
+      } else if (!user && pathname !== "/signup") {
+        await push("/signin");
+      }
+      setLoading(false);
+    })();
+  }, []);
 
   return (
     <ThemeProvider attribute="class">
