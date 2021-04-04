@@ -56,11 +56,6 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <img
-                  className="titleImage max-w-xs sm:max-w-sm"
-                  src="https://user-images.githubusercontent.com/67810971/113497060-f5d5bf80-953a-11eb-9c63-a5287c7bafd4.png"
-                  alt="happy-day"
-                />
                 <Diary
                   id={data.id}
                   name={data.name}
@@ -68,16 +63,7 @@ const Posts = ({ post }) => {
                   title={data.title}
                   text={data.text}
                   createAt={postDate}
-                  category={data.category}
-                />
-
-                <Button
-                  btnText="👈 Back"
-                  type="delete"
-                  size="md"
-                  onClick={() => {
-                    setLoading(true), router.back();
-                  }}
+                  category="happy"
                 />
               </div>
             </Layout>
@@ -94,11 +80,6 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <img
-                  className="titleImage max-w-xs sm:max-w-sm"
-                  src="https://user-images.githubusercontent.com/67810971/113497063-f8381980-953a-11eb-9aac-80949e013d7f.png"
-                  alt="anger-day"
-                />
                 <Diary
                   id={data.id}
                   name={data.name}
@@ -106,18 +87,8 @@ const Posts = ({ post }) => {
                   title={data.title}
                   text={data.text}
                   createAt={postDate}
-                  category={data.category}
+                  category="anger"
                 />
-                <div>
-                  <Button
-                    btnText="👈 Back"
-                    type="delete"
-                    size="md"
-                    onClick={() => {
-                      setLoading(true), router.back();
-                    }}
-                  />
-                </div>
               </div>
             </Layout>
           );
@@ -133,11 +104,6 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <img
-                  className="titleImage max-w-xs sm:max-w-sm"
-                  src="https://user-images.githubusercontent.com/67810971/113497062-f79f8300-953a-11eb-98fa-8abef78ae96e.png"
-                  alt="sad-day"
-                />
                 <Diary
                   id={data.id}
                   name={data.name}
@@ -145,18 +111,8 @@ const Posts = ({ post }) => {
                   title={data.title}
                   text={data.text}
                   createAt={postDate}
-                  category={data.category}
+                  category="sad"
                 />
-                <div>
-                  <Button
-                    btnText="👈 Back"
-                    type="delete"
-                    size="md"
-                    onClick={() => {
-                      setLoading(true), router.back();
-                    }}
-                  />
-                </div>
               </div>
             </Layout>
           );
@@ -172,11 +128,6 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <img
-                  className="titleImage max-w-xs sm:max-w-sm"
-                  src="https://user-images.githubusercontent.com/67810971/113497064-f8d0b000-953a-11eb-878e-f8128bbbc906.png"
-                  alt="relax-day"
-                />
                 <Diary
                   id={data.id}
                   name={data.name}
@@ -184,18 +135,8 @@ const Posts = ({ post }) => {
                   title={data.title}
                   text={data.text}
                   createAt={postDate}
-                  category={data.category}
+                  category="relax"
                 />
-                <div>
-                  <Button
-                    btnText="👈 Back"
-                    type="delete"
-                    size="md"
-                    onClick={() => {
-                      setLoading(true), router.back();
-                    }}
-                  />
-                </div>
               </div>
             </Layout>
           );
@@ -211,14 +152,6 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <div>
-                  <img
-                    className="titleImage max-w-xs sm:max-w-sm"
-                    src="https://user-images.githubusercontent.com/67810971/113497065-fa01dd00-953a-11eb-8ca1-3129f0985f85.png"
-                    alt="nothing-day"
-                  />
-                </div>
-
                 <Diary
                   id={data.id}
                   name={data.name}
@@ -226,18 +159,8 @@ const Posts = ({ post }) => {
                   title={data.title}
                   text={data.text}
                   createAt={postDate}
-                  category={data.category}
+                  category="nothing"
                 />
-                <div>
-                  <Button
-                    btnText="👈 Back"
-                    type="delete"
-                    size="md"
-                    onClick={() => {
-                      setLoading(true), router.back();
-                    }}
-                  />
-                </div>
               </div>
             </Layout>
           );
