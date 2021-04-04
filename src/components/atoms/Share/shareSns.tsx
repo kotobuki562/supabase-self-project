@@ -16,7 +16,7 @@ type Props = {
 export const ShareSNS: VFC<Props> = (props) => {
   return (
     <div className="flex flex-col items-center">
-      <p className="mt-10 font-bold text-2xl">SHARE</p>
+      <p className="mt-10 font-bold text-2xl">Share</p>
       <div className="flex justify-around w-72 mt-4 mb-8">
         <TwitterShareButton
           url={`https://emoji-diary.vercel.app/posts/${props.id}`}
