@@ -19,8 +19,13 @@ export const Header = () => {
       <header>
         <nav className="flex justify-between items-center px-4 py-2">
           <Link href="/">
-            <a className="text-darkSushi dark:text-sushi text-xl font-semibold sm:text-2xl">
-              emoji日記😊
+            <a className="text-darkSushi text-xl font-semibold sm:text-2xl flex items-center">
+              <img
+                className="w-32 sm:w-44"
+                src="/images/emoji-title-dark.png"
+                alt="logo"
+              />
+              😊
             </a>
           </Link>
           <div className="flex items-center">
@@ -54,8 +59,13 @@ export const Header = () => {
       <header>
         <nav className="flex justify-between items-center px-4 py-2">
           <Link href="/">
-            <a className="text-darkSushi dark:text-sushi text-xl font-semibold sm:text-2xl">
-              emoji日記😎
+            <a className="dark:text-sushi text-xl font-semibold sm:text-2xl flex items-center">
+              <img
+                className="w-32 sm:w-44"
+                src="/images/emoji-title.png"
+                alt="logo"
+              />
+              😎
             </a>
           </Link>
           <div className="flex items-center">
