@@ -7,6 +7,7 @@ import { formatISO } from "date-fns";
 import { Button } from "../components/atoms/Button/Button";
 import { useRouter } from "next/router";
 import cc from "classcat";
+import { ModalItem } from "../components/atoms/Modal/modal";
 
 const Create: NextPage = () => {
   const router = useRouter();
@@ -193,9 +194,6 @@ const Create: NextPage = () => {
         {switchEmoji ? (
           <div>
             <InputForm inputs={emojiList} />
-            <div>
-              ※日記が一覧画面に表示されるのに10秒程度かかります。都度リロードしてみてください
-            </div>
             <div className="flex">
               <div className="mr-4">
                 <Button
@@ -210,17 +208,59 @@ const Create: NextPage = () => {
               </div>
 
               <div>
-                <Button
-                  disabled={
-                    !name ||
-                    !text ||
-                    !title ||
-                    !emoji ||
-                    emoji.length !== 2 ||
-                    !category
+                <ModalItem
+                  title="日記を作成します。"
+                  text={
+                    <div className="my-4">
+                      <div className="flex flex-col mb-8 w-full">
+                        <div className="flex w-full mb-4">
+                          <div className="w-2/5">
+                            <p>あなたのお名前</p>
+                          </div>
+                          <div className="w-3/5">
+                            <p className="dark:text-white">{name}</p>
+                          </div>
+                        </div>
+                        <div className="flex w-full mb-4">
+                          <div className="w-2/5">
+                            <p>日記タイトル</p>
+                          </div>
+                          <div className="w-3/5">
+                            <p className="dark:text-white">{title}</p>
+                          </div>
+                        </div>
+                        <div className="flex w-full mb-4">
+                          <div className="w-2/5">
+                            <p>日記詳細</p>
+                          </div>
+                          <div className="w-3/5">
+                            <p className="dark:text-white">{text}</p>
+                          </div>
+                        </div>
+                        <div className="flex w-full mb-4">
+                          <div className="w-2/5">
+                            <p>emoji</p>
+                          </div>
+                          <div className="w-3/5">
+                            <p className="dark:text-white">{emoji}</p>
+                          </div>
+                        </div>
+                        <div className="flex w-full mb-4">
+                          <div className="w-2/5">
+                            <p>その時の気持ち</p>
+                          </div>
+                          <div className="w-3/5">
+                            <p className="dark:text-white">{category}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <p>
+                        ※日記が一覧画面に表示されるのに10秒程度かかります。都度リロードしてみてください
+                      </p>
+                    </div>
                   }
-                  btnText="Create! 🎉"
-                  type={
+                  btnType={
                     !name ||
                     !text ||
                     !title ||
@@ -230,7 +270,14 @@ const Create: NextPage = () => {
                       ? null
                       : "other"
                   }
-                  size="sm"
+                  disabled={
+                    !name ||
+                    !text ||
+                    !title ||
+                    !emoji ||
+                    emoji.length !== 2 ||
+                    !category
+                  }
                   onClick={() => {
                     addTodo();
                     setTitle("");

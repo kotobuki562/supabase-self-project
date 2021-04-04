@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import type { GetStaticPaths } from "next";
 import { format } from "date-fns";
 import Diary from "../../components/templates/Diary/Diary";
-import { Button } from "../../components/atoms/Button/Button";
+// import { Button } from "../../components/atoms/Button/Button";
 import Loading from "../../components/atoms/Loading/Loading";
 
 export const getStaticPaths: GetStaticPaths<{
