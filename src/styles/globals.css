@@ -7,3 +7,17 @@
   grid-template-rows: auto 1fr auto;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+.titleImage {
+  -webkit-filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.2));
+  -moz-filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.2));
+  -ms-filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.2));
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 500px;
+  object-fit: cover;
+}

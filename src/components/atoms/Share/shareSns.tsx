@@ -20,7 +20,7 @@ export const ShareSNS: VFC<Props> = (props) => {
       <div className="flex justify-around w-72 mt-4 mb-8">
         <TwitterShareButton
           url={`https://emoji-diary.vercel.app/posts/${props.id}`}
-          title={`${props.title} #emoji日記 #emojiDiary`}
+          title={`emoji日記 | ${props.title} #emoji日記 #emojiDiary`}
         >
           <TwitterIcon size={45} round={true} />
         </TwitterShareButton>
