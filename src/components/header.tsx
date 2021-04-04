@@ -3,7 +3,7 @@ import { useTheme } from "next-themes";
 import { supabase } from "../util/supabase";
 import { icons } from "../../public/Icon";
 import { useRouter } from "next/router";
-import { Button } from "../components/parts/Button/Button";
+import { Button } from "./atoms/Button/Button";
 import Link from "next/link";
 
 export const Header = () => {

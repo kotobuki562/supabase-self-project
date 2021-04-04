@@ -3,7 +3,7 @@ import { Layout } from "../components/layout";
 import { supabase } from "../util/supabase";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Loading from "../components/parts/Loading/Loading";
+import Loading from "../components/atoms/Loading/Loading";
 
 export async function getStaticProps() {
   const lists = await supabase.from("lists").select("*");

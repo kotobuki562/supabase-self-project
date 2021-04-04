@@ -2,9 +2,9 @@ import { NextPage } from "next";
 import { Layout } from "../components/layout";
 import { supabase } from "../util/supabase";
 import { useState } from "react";
-import { InputForm } from "../components/parts/Input/Input";
+import { InputForm } from "../components/atoms/Input/Input";
 import { formatISO } from "date-fns";
-import { Button } from "../components/parts/Button/Button";
+import { Button } from "../components/atoms/Button/Button";
 import { useRouter } from "next/router";
 import cc from "classcat";
 
@@ -193,6 +193,9 @@ const Create: NextPage = () => {
         {switchEmoji ? (
           <div>
             <InputForm inputs={emojiList} />
+            <div>
+              ※日記が一覧画面に表示されるのに10秒程度かかります。都度リロードしてみてください
+            </div>
             <div className="flex">
               <div className="mr-4">
                 <Button
@@ -205,6 +208,7 @@ const Create: NextPage = () => {
                   }}
                 />
               </div>
+
               <div>
                 <Button
                   disabled={
