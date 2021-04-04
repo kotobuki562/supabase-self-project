@@ -149,7 +149,7 @@ const Create: NextPage = () => {
             <div>
               <Button
                 disabled={!name}
-                btnText="next 👉"
+                btnText="Next 👉"
                 type={!name ? null : "other"}
                 size="sm"
                 onClick={() => {
@@ -166,7 +166,7 @@ const Create: NextPage = () => {
             <div className="flex">
               <div className="mr-4">
                 <Button
-                  btnText="👈 back"
+                  btnText="👈 Back"
                   type="delete"
                   size="sm"
                   onClick={() => {
@@ -178,7 +178,7 @@ const Create: NextPage = () => {
               <div>
                 <Button
                   disabled={!text || !title}
-                  btnText="next 👉"
+                  btnText="Next 👉"
                   type={!text || !title ? null : "other"}
                   size="sm"
                   onClick={() => {
@@ -199,7 +199,7 @@ const Create: NextPage = () => {
             <div className="flex">
               <div className="mr-4">
                 <Button
-                  btnText="👈 back"
+                  btnText="👈 Back"
                   type="delete"
                   size="sm"
                   onClick={() => {
@@ -219,7 +219,7 @@ const Create: NextPage = () => {
                     emoji.length !== 2 ||
                     !category
                   }
-                  btnText="create! 🎉"
+                  btnText="Create! 🎉"
                   type={
                     !name ||
                     !text ||

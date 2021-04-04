@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import type { GetStaticPaths } from "next";
 import { format } from "date-fns";
 import Diary from "../../components/templates/Diary/Diary";
+import { Button } from "../../components/atoms/Button/Button";
+import Loading from "../../components/atoms/Loading/Loading";
 
 export const getStaticPaths: GetStaticPaths<{
   postId: string | null;
@@ -30,11 +32,19 @@ export const getStaticProps = async ({ params }) => {
 };
 
 const Posts = ({ post }) => {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   return (
     <>
       {post.map((data) => {
         const postDate = format(new Date(data.createAt), "yyyy年MM月dd日");
-        if (data?.category === "😊") {
+        if (loading) {
+          return (
+            <Layout>
+              <Loading />
+            </Layout>
+          );
+        } else if (data?.category === "😊") {
           return (
             <Layout
               key={data.id}
@@ -47,7 +57,7 @@ const Posts = ({ post }) => {
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <img
-                  className="titleImage"
+                  className="titleImage max-w-xs sm:max-w-sm"
                   src="https://user-images.githubusercontent.com/67810971/113497060-f5d5bf80-953a-11eb-9c63-a5287c7bafd4.png"
                   alt="happy-day"
                 />
@@ -59,6 +69,15 @@ const Posts = ({ post }) => {
                   text={data.text}
                   createAt={postDate}
                   category={data.category}
+                />
+
+                <Button
+                  btnText="👈 Back"
+                  type="delete"
+                  size="md"
+                  onClick={() => {
+                    setLoading(true), router.back();
+                  }}
                 />
               </div>
             </Layout>
@@ -76,7 +95,7 @@ const Posts = ({ post }) => {
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <img
-                  className="titleImage"
+                  className="titleImage max-w-xs sm:max-w-sm"
                   src="https://user-images.githubusercontent.com/67810971/113497063-f8381980-953a-11eb-9aac-80949e013d7f.png"
                   alt="anger-day"
                 />
@@ -89,6 +108,16 @@ const Posts = ({ post }) => {
                   createAt={postDate}
                   category={data.category}
                 />
+                <div>
+                  <Button
+                    btnText="👈 Back"
+                    type="delete"
+                    size="md"
+                    onClick={() => {
+                      setLoading(true), router.back();
+                    }}
+                  />
+                </div>
               </div>
             </Layout>
           );
@@ -105,7 +134,7 @@ const Posts = ({ post }) => {
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <img
-                  className="titleImage"
+                  className="titleImage max-w-xs sm:max-w-sm"
                   src="https://user-images.githubusercontent.com/67810971/113497062-f79f8300-953a-11eb-98fa-8abef78ae96e.png"
                   alt="sad-day"
                 />
@@ -118,6 +147,16 @@ const Posts = ({ post }) => {
                   createAt={postDate}
                   category={data.category}
                 />
+                <div>
+                  <Button
+                    btnText="👈 Back"
+                    type="delete"
+                    size="md"
+                    onClick={() => {
+                      setLoading(true), router.back();
+                    }}
+                  />
+                </div>
               </div>
             </Layout>
           );
@@ -134,7 +173,7 @@ const Posts = ({ post }) => {
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <img
-                  className="titleImage"
+                  className="titleImage max-w-xs sm:max-w-sm"
                   src="https://user-images.githubusercontent.com/67810971/113497064-f8d0b000-953a-11eb-878e-f8128bbbc906.png"
                   alt="relax-day"
                 />
@@ -147,6 +186,16 @@ const Posts = ({ post }) => {
                   createAt={postDate}
                   category={data.category}
                 />
+                <div>
+                  <Button
+                    btnText="👈 Back"
+                    type="delete"
+                    size="md"
+                    onClick={() => {
+                      setLoading(true), router.back();
+                    }}
+                  />
+                </div>
               </div>
             </Layout>
           );
@@ -164,7 +213,7 @@ const Posts = ({ post }) => {
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <div>
                   <img
-                    className="titleImage"
+                    className="titleImage max-w-xs sm:max-w-sm"
                     src="https://user-images.githubusercontent.com/67810971/113497065-fa01dd00-953a-11eb-8ca1-3129f0985f85.png"
                     alt="nothing-day"
                   />
@@ -179,6 +228,16 @@ const Posts = ({ post }) => {
                   createAt={postDate}
                   category={data.category}
                 />
+                <div>
+                  <Button
+                    btnText="👈 Back"
+                    type="delete"
+                    size="md"
+                    onClick={() => {
+                      setLoading(true), router.back();
+                    }}
+                  />
+                </div>
               </div>
             </Layout>
           );
