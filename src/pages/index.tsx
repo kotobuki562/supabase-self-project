@@ -36,7 +36,14 @@ const Home = ({ posts }) => {
   // }, []);
 
   return (
-    <Layout>
+    <Layout
+      meta={{
+        pageName: "emoji日記 | 今日の出来事を絵文字で現そう。",
+        description:
+          "今日の出来事を30秒で振り返りませんか？良い思い出もあれば悪い思い出もある。それで良いのです。",
+        cardImage: "/icon/1024.png",
+      }}
+    >
       <div className="flex flex-col w-full px-4">
         {/* {isLoading ? (
           <Loading />

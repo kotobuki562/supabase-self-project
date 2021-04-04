@@ -1,14 +1,10 @@
-import React from 'react'
+import React from "react";
 
 const TodoList = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <div></div>;
+};
 
-export default TodoList
+export default TodoList;
 
 // import { useState, useEffect } from "react";
 // import { supabase } from "../util/supabase";

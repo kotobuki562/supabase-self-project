@@ -34,18 +34,6 @@ const Diary: VFC<DiaryInfo> = (props) => {
 
       <ShareSNS id={props.id} title={props.title} />
     </div>
-    // <div>
-    //   <div className="flex flex-col items-center">
-    //     <h2 className="text-7xl sm:text-9xl mb-4">{props.emoji}</h2>
-    //   </div>
-    //   <section>
-    //     <h1>{props.title}</h1>
-    //     <p>{props.text}</p>
-    //     <p>{props.createAt}</p>
-    //   </section>
-    //   <p>{props.name}</p>
-    //   <ShareSNS id={props.id} title={props.title} />
-    // </div>
   );
 };
 
