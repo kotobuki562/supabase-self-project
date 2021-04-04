@@ -15,7 +15,7 @@ type Props = {
 
 export const ShareSNS: VFC<Props> = (props) => {
   return (
-    <>
+    <div className="flex flex-col items-center">
       <p className="mt-10 font-bold text-2xl">SHARE</p>
       <div className="flex justify-around w-72 mt-4 mb-8">
         <TwitterShareButton
@@ -36,6 +36,6 @@ export const ShareSNS: VFC<Props> = (props) => {
           <LineIcon size={45} round={true} />
         </LineShareButton>
       </div>
-    </>
+    </div>
   );
 };
