@@ -1,5 +1,5 @@
 import React, { VFC } from "react";
-import { ShareSNS } from "../../parts/Share/shareSns";
+import { ShareSNS } from "../../atoms/Share/shareSns";
 
 type DiaryInfo = {
   id: string;

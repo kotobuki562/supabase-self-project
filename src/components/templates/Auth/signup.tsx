@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import { useForm } from "react-hook-form";
-import { Form } from "../components/parts/Form/Form";
-import { supabase } from "../util/supabase";
-import { Layout } from "../components/layout";
+import { Form } from "../../atoms/Form/Form";
+import { supabase } from "../../../util/supabase";
+import { Layout } from "../../layout";
 
 type IForm = {
   email: string;
@@ -10,7 +10,7 @@ type IForm = {
   passwordConf: string;
 };
 
-const Signup: NextPage = () => {
+const Signup = () => {
   const { register, handleSubmit } = useForm<IForm>();
   const handleSignup = ({ email, password }: IForm) => {
     supabase.auth.signUp({ email, password });

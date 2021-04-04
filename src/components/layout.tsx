@@ -46,7 +46,7 @@ export const Layout: VFC<Props> = (props) => {
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.cardImage} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@polgonfoods" />
+        <meta name="twitter:site" content="@NEKO_and_SPA" />
         <meta name="twitter:creator" content="@NEKO_and_SPA" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
