@@ -18,14 +18,14 @@ const Diary: VFC<DiaryInfo> = (props) => {
         <h2 className="text-7xl sm:text-9xl mb-8">{props.emoji}</h2>
       </div>
       <section>
-        <div className="mb-8 w-full">
-          <h1 className="text-dark dark:text-white text-center text-3xl mb-4">
+        <div className="mb-16 w-full tracking-wider">
+          <h1 className="text-dark dark:text-white text-center text-3xl font-semibold mb-8">
             {props.title}
           </h1>
           <p className="text-dark dark:text-white">{props.text}</p>
         </div>
 
-        <div className="text-sm sm:text-base">
+        <div className="text-sm sm:text-base text-fontDark">
           <p>
             {props.name}さんが{props.createAt}に作成
           </p>
