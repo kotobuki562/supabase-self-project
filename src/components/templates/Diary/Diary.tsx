@@ -4,7 +4,7 @@ import { ShareSNS } from "../../atoms/Share/shareSns";
 import { supabase } from "../../../util/supabase";
 import { InputForm } from "../../atoms/Input/Input";
 import { Button } from "../../atoms/Button/Button";
-
+import { formatISO } from "date-fns";
 type DiaryInfo = {
   id: string;
   name: string;
@@ -16,6 +16,7 @@ type DiaryInfo = {
 };
 
 const Diary: VFC<DiaryInfo> = (props) => {
+  const today = formatISO(new Date());
   const router = useRouter();
   const [item, setItem] = useState("");
   const [emoji, setEmoji] = useState([]);
@@ -29,7 +30,9 @@ const Diary: VFC<DiaryInfo> = (props) => {
     // const { data: emojis } = await supabase.from("emojis").select("emojis");
   };
   const updateEmojis = async () => {
-    await supabase.from("emojis").insert([{ list_id: props.id, emoji: item }]);
+    await supabase
+      .from("emojis")
+      .insert([{ list_id: props.id, emoji: item, createAt: today }]);
   };
 
   const emojiList = [
