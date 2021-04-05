@@ -34,6 +34,7 @@ const Diary: VFC<DiaryInfo> = (props) => {
       await supabase
         .from("emojis")
         .insert([{ list_id: props.id, emoji: item, createAt: today }]);
+      await router.reload();
     } catch (error) {
       console.log(error);
     }
@@ -177,7 +178,6 @@ const Diary: VFC<DiaryInfo> = (props) => {
           size="sm"
           onClick={() => {
             updateEmojis();
-            router.reload();
           }}
           btnText="emojiを贈る"
         />
