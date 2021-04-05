@@ -1,5 +1,9 @@
-import React, { VFC } from "react";
+import React, { VFC, useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { ShareSNS } from "../../atoms/Share/shareSns";
+import { supabase } from "../../../util/supabase";
+import { InputForm } from "../../atoms/Input/Input";
+import { Button } from "../../atoms/Button/Button";
 
 type DiaryInfo = {
   id: string;
@@ -12,6 +16,97 @@ type DiaryInfo = {
 };
 
 const Diary: VFC<DiaryInfo> = (props) => {
+  const router = useRouter();
+  const [item, setItem] = useState("");
+  const [emoji, setEmoji] = useState([]);
+  const readData = async () => {
+    const { data: emojis, error } = await supabase
+      .from("emojis")
+      .select("*")
+      .eq("list_id", props.id);
+    setEmoji(emojis);
+    // const { data, error } = await supabase.from("emojis").select(`id,emojis`);
+    // const { data: emojis } = await supabase.from("emojis").select("emojis");
+  };
+  const updateEmojis = async () => {
+    await supabase.from("emojis").insert([{ list_id: props.id, emoji: item }]);
+  };
+
+  const emojiList = [
+    {
+      type: "text",
+      name: "emoji",
+      value: item,
+      onChange: (e) => setItem(e.target.value),
+      placeholder: "日記にemojiを贈ろう！",
+      select: true,
+      selectValue: [
+        "😄",
+        "😃",
+        "😀",
+        "😊",
+        "😉",
+        "😍",
+        "😘",
+        "😚",
+        "😗",
+        "😙",
+        "😜",
+        "😝",
+        "😛",
+        "😳",
+        "😁",
+        "😔",
+        "😌",
+        "😒",
+        "😞",
+        "😣",
+        "😢",
+        "😂",
+        "😭",
+        "😪",
+        "😥",
+        "😰",
+        "😅",
+        "😓",
+        "😩",
+        "😫",
+        "😨",
+        "😱",
+        "😠",
+        "😡",
+        "😤",
+        "😖",
+        "😆",
+        "😋",
+        "😷",
+        "😎",
+        "😴",
+        "😵",
+        "😲",
+        "😟",
+        "😦",
+        "😧",
+        "😈",
+        "👿",
+        "😮",
+        "😬",
+        "😐",
+        "😕",
+        "😯",
+        "😶",
+        "😇",
+        "😏",
+        "😑",
+        "🤔",
+        "🥳",
+      ],
+    },
+  ];
+
+  useEffect(() => {
+    readData();
+  }, []);
   return (
     <div>
       {props.category === "happy" ? (
@@ -67,6 +162,28 @@ const Diary: VFC<DiaryInfo> = (props) => {
           </p>
         </div>
       </section>
+      <div className="mt-10">
+        <InputForm inputs={emojiList} />
+        <Button
+          type={!item ? null : "other"}
+          disabled={!item}
+          size="sm"
+          onClick={() => {
+            updateEmojis();
+            router.reload();
+          }}
+          btnText="emojiを贈る"
+        />
+        <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7">
+          {emoji.map((stamp) => {
+            return (
+              <p className="text-center text-3xl p-5 m-5" key={stamp.id}>
+                {stamp.emoji}
+              </p>
+            );
+          })}
+        </div>
+      </div>
 
       <ShareSNS id={props.id} title={props.title} />
     </div>

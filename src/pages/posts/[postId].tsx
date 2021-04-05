@@ -34,6 +34,7 @@ export const getStaticProps = async ({ params }) => {
 const Posts = ({ post }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
   return (
     <>
       {post.map((data) => {
