@@ -30,9 +30,13 @@ const Diary: VFC<DiaryInfo> = (props) => {
     // const { data: emojis } = await supabase.from("emojis").select("emojis");
   };
   const updateEmojis = async () => {
-    await supabase
-      .from("emojis")
-      .insert([{ list_id: props.id, emoji: item, createAt: today }]);
+    try {
+      await supabase
+        .from("emojis")
+        .insert([{ list_id: props.id, emoji: item, createAt: today }]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const emojiList = [
