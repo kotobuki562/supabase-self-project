@@ -75,7 +75,7 @@ const Create: NextPage = () => {
       name: "emoji",
       value: emoji,
       onChange: (e) => setEmoji(e.target.value),
-      leftIcon: "🥝",
+      leftIcon: "💡",
       placeholder: "emojiを一つだけ入力してください🙏",
     },
     {
@@ -97,7 +97,15 @@ const Create: NextPage = () => {
     );
   } else {
     return (
-      <Layout>
+      <Layout
+        meta={{
+          pageName: "emoji日記 | 今日あったことを30秒で振り返りませんか？",
+          cardImage:
+            "https://user-images.githubusercontent.com/67810971/113526962-e320c080-95f6-11eb-8f5d-22d1aa1ba5da.png",
+          description:
+            "今日の出来事を30秒で振り返って、絵文字を載せて振り返りましょう。今の心境を語るでもよし！",
+        }}
+      >
         <div className="flex flex-col w-full px-4">
           <div className="border-sushi flex justify-between my-4">
             <div className="p-1 w-full flex flex-col items-center">

@@ -32,8 +32,16 @@ export const Layout: VFC<Props> = (props) => {
         <meta name="robots" content="follow, index" />
         <link href="/icon/16.ico" rel="shortcut icon" />
         <link rel="apple-touch-icon" sizes="180x180" href="/icon/180.png" />
-        <link rel="icon" sizes="32x32" href="/icon/32.ico" />
-        <link rel="icon" sizes="16x16" href="/icon/16.ico" />
+        <link
+          rel="icon"
+          sizes="32x32"
+          href="https://user-images.githubusercontent.com/67810971/113526965-e5831a80-95f6-11eb-9cc7-99affd12a18f.png"
+        />
+        <link
+          rel="icon"
+          sizes="16x16"
+          href="https://user-images.githubusercontent.com/67810971/113526965-e5831a80-95f6-11eb-9cc7-99affd12a18f.png"
+        />
         {/* <link rel="manifest" href="/site.webmanifest" /> */}
         <meta content={meta.description} name="description" />
         <meta
