@@ -53,7 +53,7 @@ const Posts = ({ post }) => {
                 pageName: `emoji日記 | ${data.title}`,
                 description: `${data.name}さんのハッピーな日記 | ${data.text}`,
                 cardImage:
-                  "https://user-images.githubusercontent.com/67810971/113494641-198e0b00-9525-11eb-9359-0e3074d7a660.png",
+                  "https://user-images.githubusercontent.com/67810971/113656677-5699ff00-96d7-11eb-8520-101b0887ee2a.png",
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
@@ -77,7 +77,7 @@ const Posts = ({ post }) => {
                 pageName: `emoji日記 | ${data.title}`,
                 description: `${data.name}さんの怒りに燃える日記 | ${data.text}`,
                 cardImage:
-                  "https://user-images.githubusercontent.com/67810971/113494637-14c95700-9525-11eb-8781-612b022fd86c.png",
+                  "https://user-images.githubusercontent.com/67810971/113656680-57cb2c00-96d7-11eb-88f4-69ba0519a933.png",
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
@@ -101,7 +101,7 @@ const Posts = ({ post }) => {
                 pageName: `emoji日記 | ${data.title}`,
                 description: `${data.name}さんの悲しみに暮れた日記 | ${data.text}`,
                 cardImage:
-                  "https://user-images.githubusercontent.com/67810971/113494636-12ff9380-9525-11eb-8f24-bffdc014fdd9.png",
+                  "https://user-images.githubusercontent.com/67810971/113656682-5863c280-96d7-11eb-9b78-3c0b7e72b90b.png",
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
@@ -125,7 +125,7 @@ const Posts = ({ post }) => {
                 pageName: `emoji日記 | ${data.title}`,
                 description: `${data.name}さんのリラックスした日記 | ${data.text}`,
                 cardImage:
-                  "https://user-images.githubusercontent.com/67810971/113494638-1561ed80-9525-11eb-9f89-39c6abcbecb0.png",
+                  "https://user-images.githubusercontent.com/67810971/113656679-57cb2c00-96d7-11eb-89b2-034189b963ec.png",
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
@@ -149,7 +149,7 @@ const Posts = ({ post }) => {
                 pageName: `emoji日記 | ${data.title}`,
                 description: `${data.name}さんの何も無かった日記 | ${data.text}`,
                 cardImage:
-                  "https://user-images.githubusercontent.com/67810971/113494640-15fa8400-9525-11eb-919e-e02ec4b99e1d.png",
+                  "https://user-images.githubusercontent.com/67810971/113656688-5994ef80-96d7-11eb-92bf-dd06fd5eeddb.png",
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
