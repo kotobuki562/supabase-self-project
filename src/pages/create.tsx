@@ -25,6 +25,7 @@ const Create: NextPage = () => {
   const date = formatISO(new Date());
   const addTodo = async () => {
     try {
+      await setLoading(true);
       await supabase.from("lists").insert([
         {
           name: name,
@@ -36,8 +37,10 @@ const Create: NextPage = () => {
           updateAt: date,
         },
       ]);
+      await setLoading(false);
       return router.push("/");
     } catch (error) {
+      await setLoading(false);
       return console.log(error);
     }
   };
@@ -296,13 +299,11 @@ const Create: NextPage = () => {
                       !category
                     }
                     onClick={() => {
-                      setLoading(true);
                       addTodo();
                       setTitle("");
                       setText("");
                       setEmoji("");
                       setCategory("");
-                      setLoading(false);
                     }}
                   />
                 </div>
