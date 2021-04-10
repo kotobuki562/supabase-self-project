@@ -15,7 +15,8 @@ export const HomeEmoji: VFC<Props> = (props) => {
         query: { postId: props.id },
       }}
     >
-      <a className="m-5 p-5 transition duration-200 text-center text-4xl sm:text-4xl hover:bg-gray-100 dark:hover:bg-semiDark border-fontDark rounded-lg filter blur-sm hover:blur-0">
+      {/* filter blur-sm hover:blur-0 */}
+      <a className="m-5 p-5 transition duration-200 text-center text-4xl sm:text-4xl hover:bg-gray-100 dark:hover:bg-semiDark border-fontDark rounded-lg">
         {props.emoji}
       </a>
     </Link>

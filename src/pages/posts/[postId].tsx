@@ -35,6 +35,16 @@ const Posts = ({ post }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  // const getData = async (get) => {
+  //   post.map((data) => {
+  //     return get(data);
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   getData(setFetchData);
+  // }, []);
+
   return (
     <>
       {post.map((data) => {
@@ -57,15 +67,7 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <Diary
-                  id={data.id}
-                  name={data.name}
-                  emoji={data.emoji}
-                  title={data.title}
-                  text={data.text}
-                  createAt={postDate}
-                  category="happy"
-                />
+                <Diary {...data} createAt={postDate} category="happy" />
               </div>
             </Layout>
           );
@@ -81,15 +83,7 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <Diary
-                  id={data.id}
-                  name={data.name}
-                  emoji={data.emoji}
-                  title={data.title}
-                  text={data.text}
-                  createAt={postDate}
-                  category="anger"
-                />
+                <Diary {...data} createAt={postDate} category="anger" />
               </div>
             </Layout>
           );
@@ -105,15 +99,7 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <Diary
-                  id={data.id}
-                  name={data.name}
-                  emoji={data.emoji}
-                  title={data.title}
-                  text={data.text}
-                  createAt={postDate}
-                  category="sad"
-                />
+                <Diary {...data} createAt={postDate} category="sad" />
               </div>
             </Layout>
           );
@@ -129,15 +115,7 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <Diary
-                  id={data.id}
-                  name={data.name}
-                  emoji={data.emoji}
-                  title={data.title}
-                  text={data.text}
-                  createAt={postDate}
-                  category="relax"
-                />
+                <Diary {...data} createAt={postDate} category="relax" />
               </div>
             </Layout>
           );
@@ -153,15 +131,7 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <Diary
-                  id={data.id}
-                  name={data.name}
-                  emoji={data.emoji}
-                  title={data.title}
-                  text={data.text}
-                  createAt={postDate}
-                  category="nothing"
-                />
+                <Diary {...data} createAt={postDate} category="nothing" />
               </div>
             </Layout>
           );
