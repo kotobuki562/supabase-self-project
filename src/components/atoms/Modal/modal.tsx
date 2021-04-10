@@ -1,4 +1,4 @@
-import React, { VFC } from "react";
+import React, { VFC, ReactNode, MouseEventHandler } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -9,16 +9,15 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import { theme } from "../ChakraTheme/color";
 import styles from "./index.module.css";
 import { Button } from "../Button/Button";
 
 type ModalInfo = {
   title: string;
-  text: any;
-  onClick?: any;
-  disabled?: any;
-  btnType?: any;
+  text: ReactNode;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
+  btnType?: "agree" | "delete" | "other" | null;
 };
 
 export const ModalItem: VFC<ModalInfo> = (props) => {

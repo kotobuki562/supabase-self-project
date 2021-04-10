@@ -1,16 +1,16 @@
-import { VFC } from "react";
+import { ChangeEventHandler, FormEventHandler, LegacyRef, VFC } from "react";
 import { Input } from "@chakra-ui/react";
 
 type IProps = {
-  onSubmit: any;
+  onSubmit: FormEventHandler<HTMLFormElement>;
   buttonText: string;
   inputList: {
     name: string;
-    ref?: any;
+    ref?: LegacyRef<HTMLInputElement>;
     type: string;
-    value?: any;
+    value?: string | number | readonly string[];
     label: string;
-    onChange?: any;
+    onChange?: ChangeEventHandler<HTMLInputElement>;
   }[];
 };
 
@@ -24,7 +24,6 @@ export const Form: VFC<IProps> = ({ onSubmit, buttonText, inputList }) => {
             <Input
               focusBorderColor="gray.300"
               className="py-1 px-2 rounded border border-fontDark outline-none shadow-none"
-              onChange={props.onChange}
               {...props}
             />
           </label>

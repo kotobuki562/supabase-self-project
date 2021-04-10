@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { Layout } from "../components/layout";
-import { supabase } from "../util/supabase";
+import { setListToSupabase } from "../repositories/lists/list";
 import { useState } from "react";
 import { InputForm } from "../components/atoms/Input/Input";
 import { formatISO } from "date-fns";
@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import cc from "classcat";
 import { ModalItem } from "../components/atoms/Modal/modal";
 import Loading from "../components/atoms/Loading/Loading";
+import List from "../models/lists/list";
 
 const Create: NextPage = () => {
   const router = useRouter();
@@ -21,23 +22,15 @@ const Create: NextPage = () => {
   const [switchName, setSwitchName] = useState(true);
   const [switchContent, setSwitchCintent] = useState(false);
   const [switchEmoji, setSwitchEmoji] = useState(false);
-
   const date = formatISO(new Date());
+
+  const list = new List(name, title, text, category, emoji, date, date);
+
   const addTodo = async () => {
     try {
-      await setLoading(true);
-      await supabase.from("lists").insert([
-        {
-          name: name,
-          title: title,
-          text: text,
-          emoji: emoji,
-          category: category,
-          createAt: date,
-          updateAt: date,
-        },
-      ]);
-      await setLoading(false);
+      setLoading(true);
+      await setListToSupabase(list, "投稿成功！");
+      setLoading(false);
       return router.push("/");
     } catch (error) {
       await setLoading(false);

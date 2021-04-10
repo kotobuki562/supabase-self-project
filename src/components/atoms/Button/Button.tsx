@@ -1,12 +1,12 @@
-import { VFC, useState } from "react";
+import { VFC, useState, MouseEventHandler } from "react";
 import cc from "classcat";
 
 type Btninfo = {
   btnText: string;
   type: "agree" | "delete" | "other";
-  onClick: any;
+  onClick: MouseEventHandler<HTMLButtonElement>;
   size: "sm" | "md" | "lg";
-  disabled?: any;
+  disabled?: boolean;
 };
 export const Button: VFC<Btninfo> = (props) => {
   return (

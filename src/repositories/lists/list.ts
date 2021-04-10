@@ -15,3 +15,23 @@ export const getAllListsData = async (catchData: List[]) => {
     console.log(error);
   }
 };
+
+export const setListToSupabase = (data: List, message: string): void => {
+  const list = supabase
+    .from("lists")
+    .insert([
+      {
+        name: data.name,
+        title: data.title,
+        text: data.text,
+        emoji: data.emoji,
+        category: data.category,
+        createAt: data.createAt,
+        updateAt: data.updateAt,
+      },
+    ])
+    .then(() => {
+      alert(message);
+      return list;
+    });
+};

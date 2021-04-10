@@ -36,7 +36,7 @@ const Home = ({ posts }) => {
         </div>
         <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7">
           {posts.map((post) => {
-            return <HomeEmoji {...post} />;
+            return <HomeEmoji key={post.id} {...post} />;
           })}
         </div>
       </div>
