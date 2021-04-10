@@ -1,24 +1,24 @@
 export default class List {
-  private readonly _id: number;
+  // private readonly _id: number;
   private _name: string;
   private _title: string;
   private _text: string;
-  private _category: "😊" | "😭" | "😡" | "😌" | "😐";
+  private _category: string;
   private _emoji: string;
   private _createAt: string | null;
   private _updateAt: string | null;
 
   constructor(
-    id: number,
+    // id: number,
     name: string,
     title: string,
     text: string,
-    category: "😊" | "😭" | "😡" | "😌" | "😐",
+    category: string,
     emoji: string,
     createAt: string | null,
     updateAt: string | null
   ) {
-    this._id = id;
+    // this._id = id;
     (this._name = name), (this._title = title);
     this._text = text;
     this._category = category;
@@ -27,9 +27,9 @@ export default class List {
     this._updateAt = updateAt;
   }
 
-  get id(): number {
-    return this._id;
-  }
+  // get id(): number {
+  //   return this._id;
+  // }
 
   get name(): string {
     return this._name;
@@ -43,7 +43,7 @@ export default class List {
     return this._text;
   }
 
-  get category(): "😊" | "😭" | "😡" | "😌" | "😐" {
+  get category(): string {
     return this._category;
   }
 
@@ -69,7 +69,7 @@ export default class List {
 
   get toObject(): Object {
     return {
-      id: this.id,
+      // id: this.id,
       name: this.name,
       title: this.title,
       text: this.text,

@@ -1,13 +1,13 @@
-import { VFC } from "react";
+import type { VFC, ChangeEventHandler, ReactNode } from "react";
 import { Input, InputGroup, InputLeftElement, Select } from "@chakra-ui/react";
 
 type Input = {
   inputs: {
     name: string;
     type: string;
-    value: any;
-    onChange: any;
-    leftIcon?: any;
+    value: string | number | readonly string[];
+    onChange: ChangeEventHandler;
+    leftIcon?: ReactNode;
     placeholder?: string;
     select?: boolean;
     selectValue?: string[];
