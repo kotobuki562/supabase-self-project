@@ -15,7 +15,7 @@ export const Button: VFC<Btninfo> = (props) => {
         disabled={props.disabled}
         onClick={props.onClick}
         className={cc([
-          "flex items-center font-semibold tracking-wide rounded-full transition duration-200 hover:text-white dark:hover:text-black outline-none",
+          "flex items-center font-semibold tracking-wide rounded-full transition duration-200 hover:text-white dark:hover:text-dark outline-none",
           props.size === "sm"
             ? "border-2 px-4 py-2 text-sm sm:text-base"
             : null,
