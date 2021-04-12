@@ -4,7 +4,7 @@ export default class List {
   private _title: string;
   private _text: string;
   private _category: string;
-  private _emoji: string;
+  private _emojiInfo: {};
   private _createAt: string | null;
   private _updateAt: string | null;
 
@@ -14,15 +14,16 @@ export default class List {
     title: string,
     text: string,
     category: string,
-    emoji: string,
+    emojiInfo: {},
     createAt: string | null,
     updateAt: string | null
   ) {
     // this._id = id;
-    (this._name = name), (this._title = title);
+    this._name = name;
+    this._title = title;
     this._text = text;
     this._category = category;
-    this._emoji = emoji;
+    this._emojiInfo = emojiInfo;
     this._createAt = createAt;
     this._updateAt = updateAt;
   }
@@ -47,8 +48,8 @@ export default class List {
     return this._category;
   }
 
-  get emoji(): string {
-    return this._emoji;
+  get emojiInfo(): {} {
+    return this._emojiInfo;
   }
 
   get createAt(): string | null {
@@ -59,8 +60,8 @@ export default class List {
     return this._updateAt;
   }
 
-  changeEmoji(emoji: string): void {
-    this._emoji = emoji;
+  changeEmojiInfo(emojiInfo: {}): void {
+    this._emojiInfo = emojiInfo;
   }
 
   setChangeCreateAt(createAt: string | null): void {
@@ -74,7 +75,7 @@ export default class List {
       title: this.title,
       text: this.text,
       category: this.category,
-      emoji: this.emoji,
+      emojiInfo: this.emojiInfo,
       createAt: this.createAt,
       updateAt: this.updateAt,
     };

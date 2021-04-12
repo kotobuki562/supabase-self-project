@@ -7,6 +7,7 @@ export const getAllListsData = async (catchData: List[]): Promise<any> => {
     const posts = lists.data;
     posts.map((post) => {
       const data = {
+        id: post.id,
         ...post,
       };
       return catchData.push(data);
@@ -24,7 +25,7 @@ export const setListToSupabase = (data: List, message: string): void => {
         name: data.name,
         title: data.title,
         text: data.text,
-        emoji: data.emoji,
+        emojiInfo: data.emojiInfo,
         category: data.category,
         createAt: data.createAt,
         updateAt: data.updateAt,

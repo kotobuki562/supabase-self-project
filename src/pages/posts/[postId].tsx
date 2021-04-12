@@ -67,7 +67,12 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <Diary {...data} createAt={postDate} category="happy" />
+                <Diary
+                  emoji={data.emojiInfo.native}
+                  {...data}
+                  createAt={postDate}
+                  category="happy"
+                />
               </div>
             </Layout>
           );
@@ -83,7 +88,12 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <Diary {...data} createAt={postDate} category="anger" />
+                <Diary
+                  emoji={data.emojiInfo.native}
+                  {...data}
+                  createAt={postDate}
+                  category="anger"
+                />
               </div>
             </Layout>
           );
@@ -99,7 +109,12 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <Diary {...data} createAt={postDate} category="sad" />
+                <Diary
+                  emoji={data.emojiInfo.native}
+                  {...data}
+                  createAt={postDate}
+                  category="sad"
+                />
               </div>
             </Layout>
           );
@@ -115,7 +130,12 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <Diary {...data} createAt={postDate} category="relax" />
+                <Diary
+                  emoji={data.emojiInfo.native}
+                  {...data}
+                  createAt={postDate}
+                  category="relax"
+                />
               </div>
             </Layout>
           );
@@ -131,7 +151,12 @@ const Posts = ({ post }) => {
               }}
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
-                <Diary {...data} createAt={postDate} category="nothing" />
+                <Diary
+                  emoji={data.emojiInfo.native}
+                  {...data}
+                  createAt={postDate}
+                  category="nothing"
+                />
               </div>
             </Layout>
           );

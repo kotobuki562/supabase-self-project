@@ -17,7 +17,14 @@ const Create: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
-  const [emoji, setEmoji] = useState({ id: "", native: "" });
+  const [emoji, setEmoji] = useState({
+    id: "",
+    native: "",
+    colons: "",
+    emotions: [""],
+    name: "",
+    skin: null,
+  });
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
   const [switchName, setSwitchName] = useState(true);
@@ -25,7 +32,7 @@ const Create: NextPage = () => {
   const [switchEmoji, setSwitchEmoji] = useState(false);
   const date = formatISO(new Date());
 
-  const list = new List(name, title, text, category, emoji.native, date, date);
+  const list = new List(name, title, text, category, emoji, date, date);
 
   const addTodo = async () => {
     try {
