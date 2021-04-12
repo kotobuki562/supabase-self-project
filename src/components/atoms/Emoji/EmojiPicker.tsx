@@ -7,14 +7,19 @@ type Props = {
   emojiValue: {
     id: string;
     native: string;
+    colons: string;
+    emotions: string[];
+    name: string;
+    skin: number | null;
   };
 };
 export const EmojiPicker: VFC<Props> = (props) => {
   const { theme } = useTheme();
-  const { id, native } = props.emojiValue;
+  const { native } = props.emojiValue;
+
   const onSelect = (emoji) => {
-    console.log({ emoji });
-    props.selectEmoji({ id, native, ...emoji });
+    // console.log({ emoji });
+    props.selectEmoji({ ...emoji });
   };
   return (
     <div>
@@ -26,11 +31,13 @@ export const EmojiPicker: VFC<Props> = (props) => {
         style={{ color: "lightgray", width: "100%" }}
         title={
           <p className="text-base">
-            {(
+            {native ? (
               <span className="text-base">
                 {native} こちらでよろしいですか?
               </span>
-            ) || "emojiを選んでください"}
+            ) : (
+              "emojiを選んでください"
+            )}
           </p>
         }
         i18n={{
@@ -62,16 +69,7 @@ export const EmojiPicker: VFC<Props> = (props) => {
           //   6: "Dark Skin Tone",
           // },
         }}
-        // custom={customEmojis}
       />
-      {/* <p>{native}</p> */}
-      {/* <Emoji
-        emoji={id}
-        size={32}
-        set="apple"
-        skin={skin ? skin : null}
-        onClick={(emoji) => onSelect({ ...emoji })}
-      /> */}
     </div>
   );
 };

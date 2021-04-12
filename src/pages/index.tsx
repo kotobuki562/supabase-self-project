@@ -16,6 +16,8 @@ export async function getStaticProps() {
 }
 
 const Home = ({ posts }) => {
+  // console.log(posts);
+
   return (
     <Layout
       meta={{
@@ -36,7 +38,14 @@ const Home = ({ posts }) => {
         </div>
         <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7">
           {posts.map((post) => {
-            return <HomeEmoji key={post.id} {...post} />;
+            return (
+              <HomeEmoji
+                key={post.id}
+                id={post.id}
+                emojiId={post.emojiInfo.id}
+                emojiSkin={post.emojiInfo.skin}
+              />
+            );
           })}
         </div>
       </div>
