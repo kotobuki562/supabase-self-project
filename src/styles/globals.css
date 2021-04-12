@@ -7,6 +7,9 @@
   grid-template-rows: auto 1fr auto;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+/* #emoji-mart-search-1 {
+  color: lightgray;
+} */
 .titleImage {
   -webkit-filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.1));
   -moz-filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.1));
