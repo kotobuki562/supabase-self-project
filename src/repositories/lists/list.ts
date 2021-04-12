@@ -1,7 +1,7 @@
 import List from "../../models/lists/list";
 import { supabase } from "../../util/supabase";
 
-export const getAllListsData = async (catchData: List[]) => {
+export const getAllListsData = async (catchData: List[]): Promise<any> => {
   try {
     const lists = await supabase.from("lists").select("*");
     const posts = lists.data;

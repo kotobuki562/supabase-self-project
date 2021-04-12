@@ -10,13 +10,14 @@ import cc from "classcat";
 import { ModalItem } from "../components/atoms/Modal/modal";
 import Loading from "../components/atoms/Loading/Loading";
 import List from "../models/lists/list";
+import { EmojiPicker } from "../components/atoms/Emoji/EmojiPicker";
 
 const Create: NextPage = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
-  const [emoji, setEmoji] = useState("");
+  const [emoji, setEmoji] = useState({ id: "", native: "" });
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
   const [switchName, setSwitchName] = useState(true);
@@ -24,7 +25,7 @@ const Create: NextPage = () => {
   const [switchEmoji, setSwitchEmoji] = useState(false);
   const date = formatISO(new Date());
 
-  const list = new List(name, title, text, category, emoji, date, date);
+  const list = new List(name, title, text, category, emoji.native, date, date);
 
   const addTodo = async () => {
     try {
@@ -65,15 +66,7 @@ const Create: NextPage = () => {
     },
   ];
 
-  const emojiList = [
-    {
-      type: "text",
-      name: "emoji",
-      value: emoji,
-      onChange: (e) => setEmoji(e.target.value),
-      leftIcon: "💡",
-      placeholder: "emojiを一つだけ入力してください🙏",
-    },
+  const emojiLists = [
     {
       type: "text",
       name: "category",
@@ -141,14 +134,14 @@ const Create: NextPage = () => {
               <span
                 className={cc([
                   "p-1 w-full rounded-lg mx-1",
-                  emoji.length == 2 && category
+                  emoji && category
                     ? "bg-darkSushi dark:bg-sushi"
                     : "bg-fontDark",
                 ])}
               ></span>
               <p
                 className={cc([
-                  emoji.length == 2 && category
+                  emoji && category
                     ? "text-darkSushi dark:text-sushi"
                     : "text-fontDark",
                 ])}
@@ -206,7 +199,11 @@ const Create: NextPage = () => {
           ) : null}
           {switchEmoji ? (
             <div>
-              <InputForm inputs={emojiList} />
+              <EmojiPicker selectEmoji={setEmoji} emojiValue={{ ...emoji }} />
+              <div className="mt-4">
+                <InputForm inputs={emojiLists} />
+              </div>
+
               <div className="flex">
                 <div className="mr-4">
                   <Button
@@ -219,8 +216,7 @@ const Create: NextPage = () => {
                     }}
                   />
                 </div>
-
-                <div>
+                <div className="mb-8">
                   <ModalItem
                     title="日記を作成します。"
                     text={
@@ -255,7 +251,7 @@ const Create: NextPage = () => {
                               <p>emoji</p>
                             </div>
                             <div className="w-3/5">
-                              <p className="dark:text-white">{emoji}</p>
+                              <p className="dark:text-white">{emoji.native}</p>
                             </div>
                           </div>
                           <div className="flex w-full mb-4">
@@ -267,35 +263,21 @@ const Create: NextPage = () => {
                             </div>
                           </div>
                         </div>
-
                         <p>
                           ※日記が一覧画面に表示されるのに10秒程度かかります。都度リロードしてみてください
                         </p>
                       </div>
                     }
                     btnType={
-                      !name ||
-                      !text ||
-                      !title ||
-                      !emoji ||
-                      emoji.length !== 2 ||
-                      !category
+                      !name || !text || !title || !emoji || !category
                         ? null
                         : "other"
                     }
-                    disabled={
-                      !name ||
-                      !text ||
-                      !title ||
-                      !emoji ||
-                      emoji.length !== 2 ||
-                      !category
-                    }
+                    disabled={!name || !text || !title || !emoji || !category}
                     onClick={() => {
                       addTodo();
                       setTitle("");
                       setText("");
-                      setEmoji("");
                       setCategory("");
                     }}
                   />
