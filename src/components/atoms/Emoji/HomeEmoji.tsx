@@ -5,6 +5,7 @@ import { VFC } from "react";
 type Props = {
   id: number;
   emojiId: string;
+  imageUrl: string;
   emojiSkin: number | null;
 };
 
@@ -19,6 +20,15 @@ export const HomeEmoji: VFC<Props> = (props) => {
     >
       {/* filter blur-sm hover:blur-0 */}
       <a className="m-5 py-7 transition duration-200 flex flex-col items-center hover:bg-gray-100 dark:hover:bg-semiDark border-fontDark rounded-lg">
+        {props.imageUrl ? (
+          <div
+            className="w-10 h-10"
+            style={{
+              backgroundImage: `url(${props.imageUrl})`,
+              backgroundSize: "contain",
+            }}
+          />
+        ) : null}
         {!props.emojiSkin ? (
           <Emoji emoji={props.emojiId} set="apple" size={35} />
         ) : (

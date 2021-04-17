@@ -13,6 +13,7 @@ type DiaryInfo = {
   emoji: string;
   title: string;
   text: string;
+  imageUrl: string;
   createAt: string;
   category?: "happy" | "anger" | "sad" | "relax" | "nothing";
 };
@@ -28,6 +29,7 @@ const Diary: VFC<DiaryInfo> = (props) => {
     emotions: [""],
     name: "",
     skin: null,
+    imageUrl: "",
   });
   const fetchData = async () => {
     const { data: emojis, error } = await supabase
@@ -90,6 +92,15 @@ const Diary: VFC<DiaryInfo> = (props) => {
       ) : null}
 
       <div className="flex flex-col items-center">
+        {props.imageUrl ? (
+          <div
+            className="w-24 h-24 mb-8"
+            style={{
+              backgroundImage: `url(${props.imageUrl})`,
+              backgroundSize: "contain",
+            }}
+          />
+        ) : null}
         <h2 className="text-7xl sm:text-9xl mb-8">{props.emoji}</h2>
       </div>
       <section>
@@ -123,6 +134,15 @@ const Diary: VFC<DiaryInfo> = (props) => {
           {emoji.map((stamp) => {
             return (
               <p className="flex flex-col items-center p-5 m-5" key={stamp.id}>
+                {stamp.emojiInfo.imageUrl ? (
+                  <div
+                    className="w-10 h-10"
+                    style={{
+                      backgroundImage: `url(${stamp.emojiInfo.imageUrl})`,
+                      backgroundSize: "contain",
+                    }}
+                  />
+                ) : null}
                 {stamp.emojiInfo.skin ? (
                   <Emoji
                     emoji={stamp.emojiInfo.id}

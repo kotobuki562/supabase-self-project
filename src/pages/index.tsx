@@ -44,6 +44,7 @@ const Home = ({ posts }) => {
                 id={post.id}
                 emojiId={post.emojiInfo.id}
                 emojiSkin={post.emojiInfo.skin}
+                imageUrl={post.emojiInfo.imageUrl}
               />
             );
           })}

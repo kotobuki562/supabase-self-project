@@ -24,6 +24,7 @@ const Create: NextPage = () => {
     emotions: [""],
     name: "",
     skin: null,
+    imageUrl: "",
   });
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
@@ -256,7 +257,19 @@ const Create: NextPage = () => {
                               <p>emoji</p>
                             </div>
                             <div className="w-3/5">
-                              <p className="dark:text-white">{emoji.native}</p>
+                              {emoji.imageUrl ? (
+                                <div
+                                  className="w-7 h-7"
+                                  style={{
+                                    backgroundSize: "contain",
+                                    backgroundImage: `url(${emoji.imageUrl})`,
+                                  }}
+                                />
+                              ) : (
+                                <p className="dark:text-white">
+                                  {emoji.native}
+                                </p>
+                              )}
                             </div>
                           </div>
                           <div className="flex w-full mb-4">
