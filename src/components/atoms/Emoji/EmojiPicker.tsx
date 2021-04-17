@@ -1,7 +1,28 @@
 import "emoji-mart/css/emoji-mart.css";
 import { Picker, Emoji } from "emoji-mart";
 import { useTheme } from "next-themes";
-import React, { useState, VFC } from "react";
+import React, { useState, useEffect, VFC } from "react";
+import { customEmojis } from "./CustomEmoji";
+import { supabase } from "../../../util/supabase";
+
+// export async function getStaticProps() {
+//   const customEmoji: any[] = [];
+//   const lists = await supabase.from("customEmoji").select("*");
+//   const posts = lists.data;
+//   posts.map((post) => {
+//     const data = {
+//       id: post.id,
+//       ...post,
+//     };
+//     return customEmoji.push(data);
+//   });
+//   return {
+//     props: {
+//       customEmoji,
+//     },
+//     revalidate: 10,
+//   };
+// }
 
 type Props = {
   selectEmoji: any;
@@ -12,19 +33,54 @@ type Props = {
     emotions: string[];
     name: string;
     skin: number | null;
+    imageUrl?: string;
   };
 };
+
 export const EmojiPicker: VFC<Props> = (props) => {
+  // const [customInfo, setCustomInfo] = useState([]);
   const { theme } = useTheme();
-  const { native } = props.emojiValue;
+  const { native, imageUrl } = props.emojiValue;
+
+  // const getCustomEmoji = async () => {
+  //   const { data: customEmoji, error } = await supabase
+  //     .from("customEmoji")
+  //     .select("*");
+  //   console.log(customEmoji);
+  //   console.log(customEmojis);
+
+  //   return setCustomInfo(customEmoji);
+  // };
 
   const onSelect = (emoji) => {
     // console.log({ emoji });
     props.selectEmoji({ ...emoji });
   };
+
+  // const fetchData = async () => {
+  //   const customEmoji: any[] = [];
+  //   const lists = await supabase.from("customEmoji").select("*");
+  //   const posts = lists.data;
+  //   posts.map((post) => {
+  //     const data = {
+  //       id: post.id,
+  //       ...post,
+  //     };
+
+  //     customEmoji.push(data);
+  //     return console.log(customEmoji);
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   fetchData();
+  //   getCustomEmoji();
+  // }, []);
+
   return (
     <div className="text-center">
       <Picker
+        custom={customEmojis}
         defaultSkin={1}
         exclude={["flags", "symbols"]}
         theme={theme === "light" ? "light" : "dark"}
@@ -34,9 +90,22 @@ export const EmojiPicker: VFC<Props> = (props) => {
         style={{ color: "lightgray", width: "100%" }}
         title={
           <p className="text-base">
-            {native ? (
-              <span className="text-base">
-                {native} こちらでよろしいですか?
+            {native || imageUrl ? (
+              <span className="text-base flex flex-col items-center">
+                {native ? (
+                  `${native} こちらでよろしいですか?`
+                ) : (
+                  <div className="flex items-center">
+                    <div
+                      className="w-7 h-7"
+                      style={{
+                        backgroundImage: `url(${imageUrl})`,
+                        backgroundSize: "contain",
+                      }}
+                    />
+                    <p>こちらでよろしいですか？</p>
+                  </div>
+                )}
               </span>
             ) : (
               "emojiを選んでください"
@@ -57,8 +126,7 @@ export const EmojiPicker: VFC<Props> = (props) => {
             foods: "食べ物 & 飲み物",
             activity: "ゲーム & スポーツ",
             places: "旅行 & 場所",
-
-            flags: "国旗",
+            objects: "オブジェクト",
             custom: "カスタム",
           },
           categorieslabel: "Emoji categories", // Accessible title for the list of categories
