@@ -11,10 +11,10 @@
   color: lightgray;
 } */
 .titleImage {
-  -webkit-filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.1));
+  /* -webkit-filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.1));
   -moz-filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.1));
   -ms-filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.1));
-  filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.1)); */
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -22,4 +22,8 @@
   margin-bottom: 20px;
   width: 50%;
   object-fit: cover;
+}
+.emoji-mart-anchors button {
+  display: flex;
+  justify-content: center;
 }
