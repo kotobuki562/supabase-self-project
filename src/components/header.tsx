@@ -11,9 +11,6 @@ export const Header = () => {
   const user = supabase.auth.user();
   const router = useRouter();
   const { theme, setTheme } = useTheme();
-  const switchTheme = async () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
 
   if (theme === "light") {
     return (
@@ -30,19 +27,34 @@ export const Header = () => {
             </a>
           </Link>
           <div className="flex items-center">
-            {user ? (
+            {/* {user ? (
               <Button
                 btnText="ログアウト"
                 type="delete"
                 size="sm"
                 onClick={() => supabase.auth.signOut()}
               />
-            ) : null}
+            ) : null} */}
             <button
               className="inline-block outline-none ml-4"
               onClick={(e) => {
                 e.preventDefault();
-                switchTheme();
+                setTheme("dark");
+                // switchTheme();
+              }}
+            >
+              <img
+                className="w-14 sm:w-20 outline-none"
+                src={icons.moonIcon}
+                alt="moon"
+              />
+            </button>
+            <button
+              className="inline-block outline-none ml-4"
+              onClick={(e) => {
+                e.preventDefault();
+                setTheme("light");
+                // switchTheme();
               }}
             >
               <img
@@ -70,25 +82,40 @@ export const Header = () => {
             </a>
           </Link>
           <div className="flex items-center">
-            {user ? (
+            {/* {user ? (
               <Button
                 btnText="ログアウト"
                 type="delete"
                 size="sm"
                 onClick={() => supabase.auth.signOut()}
               />
-            ) : null}
+            ) : null} */}
             <button
               className="inline-block outline-none ml-4"
               onClick={(e) => {
                 e.preventDefault();
-                switchTheme();
+                setTheme("dark");
+                // switchTheme();
               }}
             >
               <img
                 className="w-14 sm:w-20 outline-none"
                 src={icons.moonIcon}
                 alt="moon"
+              />
+            </button>
+            <button
+              className="inline-block outline-none ml-4"
+              onClick={(e) => {
+                e.preventDefault();
+                setTheme("light");
+                // switchTheme();
+              }}
+            >
+              <img
+                className="w-14 sm:w-20 outline-none"
+                src={icons.sunIcon}
+                alt="sun"
               />
             </button>
           </div>

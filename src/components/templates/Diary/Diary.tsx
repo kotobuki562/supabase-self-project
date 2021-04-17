@@ -5,6 +5,9 @@ import { supabase } from "../../../util/supabase";
 import { InputForm } from "../../atoms/Input/Input";
 import { Button } from "../../atoms/Button/Button";
 import { formatISO } from "date-fns";
+import { EmojiPicker } from "../../atoms/Emoji/EmojiPicker";
+import { Emoji } from "emoji-mart";
+
 type DiaryInfo = {
   id: string;
   name: string;
@@ -20,100 +23,35 @@ const Diary: VFC<DiaryInfo> = (props) => {
   const router = useRouter();
   const [item, setItem] = useState("");
   const [emoji, setEmoji] = useState([]);
-  const readData = async () => {
+  const [emojiInfo, setEmojiInfo] = useState({
+    id: "",
+    native: "",
+    colons: "",
+    emotions: [""],
+    name: "",
+    skin: null,
+  });
+  const fetchData = async () => {
     const { data: emojis, error } = await supabase
       .from("emojis")
       .select("*")
       .eq("list_id", props.id);
     setEmoji(emojis);
-    // const { data, error } = await supabase.from("emojis").select(`id,emojis`);
-    // const { data: emojis } = await supabase.from("emojis").select("emojis");
   };
+
   const updateEmojis = async () => {
     try {
       await supabase
         .from("emojis")
-        .insert([{ list_id: props.id, emoji: item, createAt: today }]);
+        .insert([{ list_id: props.id, emojiInfo: emojiInfo, createAt: today }]);
       await router.reload();
     } catch (error) {
       console.log(error);
     }
   };
 
-  const emojiList = [
-    {
-      type: "text",
-      name: "emoji",
-      value: item,
-      onChange: (e) => setItem(e.target.value),
-      placeholder: "日記にemojiを贈ろう！",
-      select: true,
-      selectValue: [
-        "😄",
-        "😃",
-        "😀",
-        "😊",
-        "😉",
-        "😍",
-        "😘",
-        "😚",
-        "😗",
-        "😙",
-        "😜",
-        "😝",
-        "😛",
-        "😳",
-        "😁",
-        "😔",
-        "😌",
-        "😒",
-        "😞",
-        "😣",
-        "😢",
-        "😂",
-        "😭",
-        "😪",
-        "😥",
-        "😰",
-        "😅",
-        "😓",
-        "😩",
-        "😫",
-        "😨",
-        "😱",
-        "😠",
-        "😡",
-        "😤",
-        "😖",
-        "😆",
-        "😋",
-        "😷",
-        "😎",
-        "😴",
-        "😵",
-        "😲",
-        "😟",
-        "😦",
-        "😧",
-        "😈",
-        "👿",
-        "😮",
-        "😬",
-        "😐",
-        "😕",
-        "😯",
-        "😶",
-        "😇",
-        "😏",
-        "😑",
-        "🤔",
-        "🥳",
-      ],
-    },
-  ];
-
   useEffect(() => {
-    readData();
+    fetchData();
   }, []);
   return (
     <div>
@@ -171,21 +109,32 @@ const Diary: VFC<DiaryInfo> = (props) => {
         </div>
       </section>
       <div className="mt-10">
-        <InputForm inputs={emojiList} />
-        <Button
-          type={!item ? null : "other"}
-          disabled={!item}
-          size="sm"
-          onClick={() => {
-            updateEmojis();
-          }}
-          btnText="emojiを贈る"
-        />
+        <EmojiPicker selectEmoji={setEmojiInfo} emojiValue={{ ...emojiInfo }} />
+        <div className="my-5">
+          <Button
+            type={!emojiInfo.id ? null : "other"}
+            disabled={!emojiInfo.id}
+            size="sm"
+            onClick={() => {
+              updateEmojis();
+            }}
+            btnText="emojiを贈る"
+          />
+        </div>
+
         <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7">
           {emoji.map((stamp) => {
             return (
-              <p className="text-center text-3xl p-5 m-5" key={stamp.id}>
-                {stamp.emoji}
+              <p className="flex flex-col items-center p-5 m-5" key={stamp.id}>
+                {stamp.emojiInfo.skin ? (
+                  <Emoji
+                    emoji={stamp.emojiInfo.id}
+                    size={35}
+                    skin={stamp.emojiInfo.skin}
+                  />
+                ) : (
+                  <Emoji emoji={stamp.emojiInfo.id} size={35} />
+                )}
               </p>
             );
           })}

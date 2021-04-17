@@ -2,6 +2,7 @@ import "emoji-mart/css/emoji-mart.css";
 import { Picker, Emoji } from "emoji-mart";
 import { useTheme } from "next-themes";
 import React, { useState, VFC } from "react";
+
 type Props = {
   selectEmoji: any;
   emojiValue: {
@@ -22,8 +23,10 @@ export const EmojiPicker: VFC<Props> = (props) => {
     props.selectEmoji({ ...emoji });
   };
   return (
-    <div>
+    <div className="text-center">
       <Picker
+        defaultSkin={1}
+        exclude={["flags", "symbols"]}
         theme={theme === "light" ? "light" : "dark"}
         showPreview={false}
         onSelect={(emoji) => onSelect({ ...emoji })}
@@ -54,8 +57,7 @@ export const EmojiPicker: VFC<Props> = (props) => {
             foods: "食べ物 & 飲み物",
             activity: "ゲーム & スポーツ",
             places: "旅行 & 場所",
-            objects: "オブジェクト",
-            symbols: "シンボル",
+
             flags: "国旗",
             custom: "カスタム",
           },

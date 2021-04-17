@@ -136,7 +136,6 @@ const Create: NextPage = () => {
                 Step 2 😎
               </p>
             </div>
-
             <div className="p-1 w-full flex flex-col items-center">
               <span
                 className={cc([
@@ -210,7 +209,6 @@ const Create: NextPage = () => {
               <div className="mt-4">
                 <InputForm inputs={emojiLists} />
               </div>
-
               <div className="flex">
                 <div className="mr-4">
                   <Button
