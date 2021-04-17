@@ -69,6 +69,7 @@ const Posts = ({ post }) => {
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <Diary
                   emoji={data.emojiInfo.native}
+                  imageUrl={data.emojiInfo.imageUrl}
                   {...data}
                   createAt={postDate}
                   category="happy"
@@ -90,6 +91,7 @@ const Posts = ({ post }) => {
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <Diary
                   emoji={data.emojiInfo.native}
+                  imageUrl={data.emojiInfo.imageUrl}
                   {...data}
                   createAt={postDate}
                   category="anger"
@@ -111,6 +113,7 @@ const Posts = ({ post }) => {
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <Diary
                   emoji={data.emojiInfo.native}
+                  imageUrl={data.emojiInfo.imageUrl}
                   {...data}
                   createAt={postDate}
                   category="sad"
@@ -132,6 +135,7 @@ const Posts = ({ post }) => {
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <Diary
                   emoji={data.emojiInfo.native}
+                  imageUrl={data.emojiInfo.imageUrl}
                   {...data}
                   createAt={postDate}
                   category="relax"
@@ -153,6 +157,7 @@ const Posts = ({ post }) => {
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <Diary
                   emoji={data.emojiInfo.native}
+                  imageUrl={data.emojiInfo.imageUrl}
                   {...data}
                   createAt={postDate}
                   category="nothing"
