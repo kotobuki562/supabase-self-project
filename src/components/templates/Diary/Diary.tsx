@@ -2,7 +2,6 @@ import React, { VFC, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { ShareSNS } from "../../atoms/Share/shareSns";
 import { supabase } from "../../../util/supabase";
-import { InputForm } from "../../atoms/Input/Input";
 import { Button } from "../../atoms/Button/Button";
 import { formatISO } from "date-fns";
 import { EmojiPicker } from "../../atoms/Emoji/EmojiPicker";
@@ -21,7 +20,6 @@ type DiaryInfo = {
 const Diary: VFC<DiaryInfo> = (props) => {
   const today = formatISO(new Date());
   const router = useRouter();
-  const [item, setItem] = useState("");
   const [emoji, setEmoji] = useState([]);
   const [emojiInfo, setEmojiInfo] = useState({
     id: "",
@@ -121,7 +119,6 @@ const Diary: VFC<DiaryInfo> = (props) => {
             btnText="emojiを贈る"
           />
         </div>
-
         <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7">
           {emoji.map((stamp) => {
             return (
@@ -140,7 +137,6 @@ const Diary: VFC<DiaryInfo> = (props) => {
           })}
         </div>
       </div>
-
       <ShareSNS id={props.id} title={props.title} />
     </div>
   );
