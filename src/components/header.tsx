@@ -44,7 +44,7 @@ export const Header = () => {
               }}
             >
               <img
-                className="w-14 sm:w-20 outline-none"
+                className="w-12 sm:w-20 outline-none"
                 src={icons.moonIcon}
                 alt="moon"
               />
@@ -58,7 +58,7 @@ export const Header = () => {
               }}
             >
               <img
-                className="w-14 sm:w-20 outline-none"
+                className="w-12 sm:w-20 outline-none"
                 src={icons.sunIcon}
                 alt="sun"
               />
@@ -99,7 +99,7 @@ export const Header = () => {
               }}
             >
               <img
-                className="w-14 sm:w-20 outline-none"
+                className="w-12 sm:w-20 outline-none"
                 src={icons.moonIcon}
                 alt="moon"
               />
@@ -113,7 +113,7 @@ export const Header = () => {
               }}
             >
               <img
-                className="w-14 sm:w-20 outline-none"
+                className="w-12 sm:w-20 outline-none"
                 src={icons.sunIcon}
                 alt="sun"
               />
