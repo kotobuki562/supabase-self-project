@@ -11,8 +11,21 @@ import { ModalItem } from "../components/atoms/Modal/modal";
 import Loading from "../components/atoms/Loading/Loading";
 import List from "../models/lists/list";
 import { EmojiPicker } from "../components/atoms/Emoji/EmojiPicker";
+import CustomEmoji from "../models/customEmoji/customEmoji";
+import { getAllCustomEmojiData } from "../repositories/customEmojis/customEmojis";
 
-const Create: NextPage = () => {
+export const getStaticProps = async ({ params }) => {
+  const customEmoji: any[] = [];
+  await getAllCustomEmojiData(customEmoji);
+  return {
+    props: {
+      customEmoji,
+    },
+    revalidate: 1,
+  };
+};
+
+const Create = ({ customEmoji }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState("");
@@ -206,7 +219,11 @@ const Create: NextPage = () => {
           ) : null}
           {switchEmoji ? (
             <div>
-              <EmojiPicker selectEmoji={setEmoji} emojiValue={{ ...emoji }} />
+              <EmojiPicker
+                customEmoji={customEmoji}
+                selectEmoji={setEmoji}
+                emojiValue={{ ...emoji }}
+              />
               <div className="mt-4">
                 <InputForm inputs={emojiLists} />
               </div>
