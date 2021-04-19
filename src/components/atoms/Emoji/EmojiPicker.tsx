@@ -2,20 +2,13 @@ import "emoji-mart/css/emoji-mart.css";
 import { Picker, Emoji } from "emoji-mart";
 import { useTheme } from "next-themes";
 import React, { useState, useEffect, VFC } from "react";
-import { customEmojis } from "./CustomEmoji";
-import { supabase } from "../../../util/supabase";
+// import { customEmojis } from "./CustomEmoji";
+// import CustomEmoji from "../../../models/customEmoji/customEmoji";
+// import { getAllCustomEmojiData } from "../../../repositories/customEmojis/customEmojis";
 
 // export async function getStaticProps() {
-//   const customEmoji: any[] = [];
-//   const lists = await supabase.from("customEmoji").select("*");
-//   const posts = lists.data;
-//   posts.map((post) => {
-//     const data = {
-//       id: post.id,
-//       ...post,
-//     };
-//     return customEmoji.push(data);
-//   });
+//   const customEmoji: CustomEmoji[] = [];
+//   await getAllCustomEmojiData(customEmoji);
 //   return {
 //     props: {
 //       customEmoji,
@@ -26,6 +19,7 @@ import { supabase } from "../../../util/supabase";
 
 type Props = {
   selectEmoji: any;
+  customEmoji: any[];
   emojiValue: {
     id: string;
     native: string;
@@ -38,7 +32,7 @@ type Props = {
 };
 
 export const EmojiPicker: VFC<Props> = (props) => {
-  // const [customInfo, setCustomInfo] = useState([]);
+  const [customInfo, setCustomInfo] = useState([]);
   const { theme } = useTheme();
   const { native, imageUrl } = props.emojiValue;
 
@@ -46,9 +40,6 @@ export const EmojiPicker: VFC<Props> = (props) => {
   //   const { data: customEmoji, error } = await supabase
   //     .from("customEmoji")
   //     .select("*");
-  //   console.log(customEmoji);
-  //   console.log(customEmojis);
-
   //   return setCustomInfo(customEmoji);
   // };
 
@@ -80,7 +71,7 @@ export const EmojiPicker: VFC<Props> = (props) => {
   return (
     <div className="text-center">
       <Picker
-        custom={customEmojis}
+        custom={props.customEmoji}
         defaultSkin={1}
         exclude={["flags", "symbols"]}
         theme={theme === "light" ? "light" : "dark"}

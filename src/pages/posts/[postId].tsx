@@ -7,6 +7,8 @@ import { format } from "date-fns";
 import Diary from "../../components/templates/Diary/Diary";
 // import { Button } from "../../components/atoms/Button/Button";
 import Loading from "../../components/atoms/Loading/Loading";
+import CustomEmoji from "../../models/customEmoji/customEmoji";
+import { getAllCustomEmojiData } from "../../repositories/customEmojis/customEmojis";
 
 export const getStaticPaths: GetStaticPaths<{
   postId: string | null;
@@ -23,15 +25,18 @@ export const getStaticProps = async ({ params }) => {
   const postId = params.postId as string;
   const getPost = await supabase.from("lists").select("*").eq("id", postId);
   const post = await getPost.data;
+  const customEmoji: any[] = [];
+  await getAllCustomEmojiData(customEmoji);
   return {
     props: {
       post,
+      customEmoji,
     },
-    revalidate: 10,
+    revalidate: 1,
   };
 };
 
-const Posts = ({ post }) => {
+const Posts = ({ post, customEmoji }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -68,6 +73,7 @@ const Posts = ({ post }) => {
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <Diary
+                  customEmoji={customEmoji}
                   emoji={data.emojiInfo.native}
                   imageUrl={data.emojiInfo.imageUrl}
                   {...data}
@@ -90,6 +96,7 @@ const Posts = ({ post }) => {
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <Diary
+                  customEmoji={customEmoji}
                   emoji={data.emojiInfo.native}
                   imageUrl={data.emojiInfo.imageUrl}
                   {...data}
@@ -112,6 +119,7 @@ const Posts = ({ post }) => {
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <Diary
+                  customEmoji={customEmoji}
                   emoji={data.emojiInfo.native}
                   imageUrl={data.emojiInfo.imageUrl}
                   {...data}
@@ -134,6 +142,7 @@ const Posts = ({ post }) => {
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <Diary
+                  customEmoji={customEmoji}
                   emoji={data.emojiInfo.native}
                   imageUrl={data.emojiInfo.imageUrl}
                   {...data}
@@ -156,6 +165,7 @@ const Posts = ({ post }) => {
             >
               <div className="flex flex-col px-4 sm:px-8 w-full" key={data.id}>
                 <Diary
+                  customEmoji={customEmoji}
                   emoji={data.emojiInfo.native}
                   imageUrl={data.emojiInfo.imageUrl}
                   {...data}
