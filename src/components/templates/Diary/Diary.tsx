@@ -16,6 +16,7 @@ type DiaryInfo = {
   imageUrl: string;
   createAt: string;
   category?: "happy" | "anger" | "sad" | "relax" | "nothing";
+  customEmoji: any[];
 };
 
 const Diary: VFC<DiaryInfo> = (props) => {
@@ -118,7 +119,11 @@ const Diary: VFC<DiaryInfo> = (props) => {
         </div>
       </section>
       <div className="mt-10">
-        <EmojiPicker selectEmoji={setEmojiInfo} emojiValue={{ ...emojiInfo }} />
+        <EmojiPicker
+          customEmoji={props.customEmoji}
+          selectEmoji={setEmojiInfo}
+          emojiValue={{ ...emojiInfo }}
+        />
         <div className="my-5">
           <Button
             type={!emojiInfo.id ? null : "other"}
