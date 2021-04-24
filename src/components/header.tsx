@@ -5,6 +5,8 @@ import { icons } from "../../public/Icon";
 import { useRouter } from "next/router";
 import { Button } from "./atoms/Button/Button";
 import { Switch } from "@chakra-ui/react";
+import { MenuItem } from "../components/atoms/Menu/Menu";
+import { ChakraMenu } from "./atoms/Menu/ChakraMenu";
 import Link from "next/link";
 
 export const Header = () => {
@@ -27,42 +29,7 @@ export const Header = () => {
             </a>
           </Link>
           <div className="flex items-center">
-            {/* {user ? (
-              <Button
-                btnText="ログアウト"
-                type="delete"
-                size="sm"
-                onClick={() => supabase.auth.signOut()}
-              />
-            ) : null} */}
-            <button
-              className="inline-block outline-none ml-4"
-              onClick={(e) => {
-                e.preventDefault();
-                setTheme("dark");
-                // switchTheme();
-              }}
-            >
-              <img
-                className="w-12 sm:w-20 outline-none"
-                src={icons.moonIcon}
-                alt="moon"
-              />
-            </button>
-            <button
-              className="inline-block outline-none ml-4"
-              onClick={(e) => {
-                e.preventDefault();
-                setTheme("light");
-                // switchTheme();
-              }}
-            >
-              <img
-                className="w-12 sm:w-20 outline-none"
-                src={icons.sunIcon}
-                alt="sun"
-              />
-            </button>
+            <MenuItem />
           </div>
         </nav>
       </header>
@@ -82,42 +49,7 @@ export const Header = () => {
             </a>
           </Link>
           <div className="flex items-center">
-            {/* {user ? (
-              <Button
-                btnText="ログアウト"
-                type="delete"
-                size="sm"
-                onClick={() => supabase.auth.signOut()}
-              />
-            ) : null} */}
-            <button
-              className="inline-block outline-none ml-4"
-              onClick={(e) => {
-                e.preventDefault();
-                setTheme("dark");
-                // switchTheme();
-              }}
-            >
-              <img
-                className="w-12 sm:w-20 outline-none"
-                src={icons.moonIcon}
-                alt="moon"
-              />
-            </button>
-            <button
-              className="inline-block outline-none ml-4"
-              onClick={(e) => {
-                e.preventDefault();
-                setTheme("light");
-                // switchTheme();
-              }}
-            >
-              <img
-                className="w-12 sm:w-20 outline-none"
-                src={icons.sunIcon}
-                alt="sun"
-              />
-            </button>
+            <MenuItem />
           </div>
         </nav>
       </header>
