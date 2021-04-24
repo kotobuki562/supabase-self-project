@@ -11,7 +11,6 @@ import { ModalItem } from "../../components/atoms/Modal/modal";
 import Loading from "../../components/atoms/Loading/Loading";
 import List from "../../models/lists/list";
 import { EmojiPicker } from "../../components/atoms/Emoji/EmojiPicker";
-import CustomEmoji from "../../models/customEmoji/customEmoji";
 import { getAllCustomEmojiData } from "../../repositories/customEmojis/customEmojis";
 
 export const getStaticProps = async ({ params }) => {
@@ -109,7 +108,7 @@ const Create = ({ customEmoji }) => {
     return (
       <Layout
         meta={{
-          pageName: "emoji日記 | 今日あったことを30秒で振り返りませんか？",
+          pageName: "emoji日記 | 今日あったことを30秒で振り返りましょう！",
           cardImage:
             "https://user-images.githubusercontent.com/67810971/113526962-e320c080-95f6-11eb-8f5d-22d1aa1ba5da.png",
           description:
