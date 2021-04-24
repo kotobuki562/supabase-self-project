@@ -29,13 +29,6 @@ const Home = ({ posts }) => {
       }}
     >
       <div className="flex flex-col w-full px-4">
-        <div className="flex">
-          <Link href="/create">
-            <a className="dark:border-sushi border-darkSushi dark:text-sushi text-darkSushi hover:bg-darkSushi dark:hover:bg-sushi border-2 px-4 py-2 text-sm sm:text-base flex items-center font-semibold tracking-wide rounded-full transition duration-200 hover:text-white dark:hover:text-black outline-none">
-              Let's create!
-            </a>
-          </Link>
-        </div>
         <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7">
           {posts.map((post) => {
             return (

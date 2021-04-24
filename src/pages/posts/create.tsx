@@ -1,18 +1,18 @@
 import { NextPage } from "next";
-import { Layout } from "../components/layout";
-import { setListToSupabase } from "../repositories/lists/list";
+import { Layout } from "../../components/layout";
+import { setListToSupabase } from "../../repositories/lists/list";
 import { useState } from "react";
-import { InputForm } from "../components/atoms/Input/Input";
+import { InputForm } from "../../components/atoms/Input/Input";
 import { formatISO } from "date-fns";
-import { Button } from "../components/atoms/Button/Button";
+import { Button } from "../../components/atoms/Button/Button";
 import { useRouter } from "next/router";
 import cc from "classcat";
-import { ModalItem } from "../components/atoms/Modal/modal";
-import Loading from "../components/atoms/Loading/Loading";
-import List from "../models/lists/list";
-import { EmojiPicker } from "../components/atoms/Emoji/EmojiPicker";
-import CustomEmoji from "../models/customEmoji/customEmoji";
-import { getAllCustomEmojiData } from "../repositories/customEmojis/customEmojis";
+import { ModalItem } from "../../components/atoms/Modal/modal";
+import Loading from "../../components/atoms/Loading/Loading";
+import List from "../../models/lists/list";
+import { EmojiPicker } from "../../components/atoms/Emoji/EmojiPicker";
+import CustomEmoji from "../../models/customEmoji/customEmoji";
+import { getAllCustomEmojiData } from "../../repositories/customEmojis/customEmojis";
 
 export const getStaticProps = async ({ params }) => {
   const customEmoji: any[] = [];

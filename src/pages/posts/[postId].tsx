@@ -37,7 +37,6 @@ export const getStaticProps = async ({ params }) => {
 };
 
 const Posts = ({ post, customEmoji }) => {
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   // const getData = async (get) => {
@@ -54,13 +53,7 @@ const Posts = ({ post, customEmoji }) => {
     <>
       {post.map((data) => {
         const postDate = format(new Date(data.createAt), "yyyy年MM月dd日");
-        if (loading) {
-          return (
-            <Layout>
-              <Loading />
-            </Layout>
-          );
-        } else if (data?.category === "😊") {
+        if (data?.category === "😊") {
           return (
             <Layout
               key={data.id}

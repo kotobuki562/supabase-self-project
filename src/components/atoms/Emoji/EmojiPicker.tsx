@@ -1,21 +1,7 @@
 import "emoji-mart/css/emoji-mart.css";
-import { Picker, Emoji } from "emoji-mart";
+import { Picker } from "emoji-mart";
 import { useTheme } from "next-themes";
-import React, { useState, useEffect, VFC } from "react";
-// import { customEmojis } from "./CustomEmoji";
-// import CustomEmoji from "../../../models/customEmoji/customEmoji";
-// import { getAllCustomEmojiData } from "../../../repositories/customEmojis/customEmojis";
-
-// export async function getStaticProps() {
-//   const customEmoji: CustomEmoji[] = [];
-//   await getAllCustomEmojiData(customEmoji);
-//   return {
-//     props: {
-//       customEmoji,
-//     },
-//     revalidate: 10,
-//   };
-// }
+import React, { VFC } from "react";
 
 type Props = {
   selectEmoji: any;
@@ -32,41 +18,13 @@ type Props = {
 };
 
 export const EmojiPicker: VFC<Props> = (props) => {
-  const [customInfo, setCustomInfo] = useState([]);
   const { theme } = useTheme();
   const { native, imageUrl } = props.emojiValue;
-
-  // const getCustomEmoji = async () => {
-  //   const { data: customEmoji, error } = await supabase
-  //     .from("customEmoji")
-  //     .select("*");
-  //   return setCustomInfo(customEmoji);
-  // };
 
   const onSelect = (emoji) => {
     // console.log({ emoji });
     props.selectEmoji({ ...emoji });
   };
-
-  // const fetchData = async () => {
-  //   const customEmoji: any[] = [];
-  //   const lists = await supabase.from("customEmoji").select("*");
-  //   const posts = lists.data;
-  //   posts.map((post) => {
-  //     const data = {
-  //       id: post.id,
-  //       ...post,
-  //     };
-
-  //     customEmoji.push(data);
-  //     return console.log(customEmoji);
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   fetchData();
-  //   getCustomEmoji();
-  // }, []);
 
   return (
     <div className="text-center">
