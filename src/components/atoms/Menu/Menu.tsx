@@ -12,7 +12,7 @@ export const MenuItem = () => {
         {({ open }) => (
           <>
             <div>
-              <Menu.Button className="inline-flex justify-center outline-none w-12 h-12 sm:w-20 sm:h-20">
+              <Menu.Button className="inline-flex justify-center focus:outline-none w-12 h-12 sm:w-20 sm:h-20">
                 <img src={icons.menuIcon} alt="menu" />
               </Menu.Button>
             </div>

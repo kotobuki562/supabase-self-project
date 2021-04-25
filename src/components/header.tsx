@@ -4,9 +4,7 @@ import { supabase } from "../util/supabase";
 import { icons } from "../../public/Icon";
 import { useRouter } from "next/router";
 import { Button } from "./atoms/Button/Button";
-import { Switch } from "@chakra-ui/react";
 import { MenuItem } from "../components/atoms/Menu/Menu";
-import { ChakraMenu } from "./atoms/Menu/ChakraMenu";
 import Link from "next/link";
 
 export const Header = () => {
