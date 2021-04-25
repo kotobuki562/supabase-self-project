@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { storage, supabase } from "../../util/supabase";
 import { icons } from "../../../public/Icon";
 import { Layout } from "../../components/layout";
 import { InputForm } from "../../components/atoms/Input/Input";
@@ -6,7 +8,7 @@ import { Button } from "../../components/atoms/Button/Button";
 
 const Create = () => {
   const [name, setName] = useState<string>("");
-  const [imageFile, setImageFile] = useState<any>();
+  const [imageFile, setImageFile] = useState<File>(null);
   const textInputs = [
     {
       type: "name",
@@ -16,6 +18,11 @@ const Create = () => {
       placeholder: "登録するemojiの名前は？🤔",
     },
   ];
+
+  // const bucketName = "customEmoji";
+  // const url = `${supabase.storage.url}/object/${bucketName}/${imageFile.name}`;
+  // const headers = supabase.storage.headers;
+  // console.log(url, headers);
 
   const handleChange = (e: any) => {
     const file = e.target?.files[0];
@@ -27,6 +34,30 @@ const Create = () => {
     reader.readAsDataURL(file);
     setImageFile(file);
   };
+
+  const uploadImageToSupabase = async (e): Promise<void> => {
+    e.preventDefault();
+    // const bucketName = "customEmoji";
+    // const url = `${supabase.storage.url}/object/${bucketName}/${imageFile.name}`;
+    // const headers = supabase.storage.headers;
+    // const formData = new FormData();
+    // formData.append("file", imageFile);
+
+    // await axios.post(url, formData, {
+    //   headers,
+    // });
+
+    const { data, error } = await storage
+      .from("customEmoji")
+      .upload(imageFile.name, imageFile);
+    // .then((img) => {
+    //   console.log(img.data);
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    // });
+  };
+
   return (
     <Layout
       meta={{
@@ -57,12 +88,18 @@ const Create = () => {
         <label htmlFor="icon-button-file">
           <div className="w-full">
             <img
-              className="w-20 h-20 bg-sushi"
+              className="w-20 h-20"
               src={icons.imageUploadIcon}
               alt="upload"
             />
           </div>
         </label>
+        <Button
+          btnText="Create!"
+          type="other"
+          onClick={uploadImageToSupabase}
+          size="sm"
+        />
       </div>
     </Layout>
   );
