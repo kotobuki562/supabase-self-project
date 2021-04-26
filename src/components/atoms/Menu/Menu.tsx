@@ -33,7 +33,7 @@ export const MenuItem = () => {
                 <div className="px-1 py-1 ">
                   <Menu.Item>
                     {({ active }) => (
-                      <button className="group flex rounded-md items-center w-full px-2 py-2 text-sm hover:text-darkSushi dark:hover:text-sushi">
+                      <button className="group flex rounded-md items-center w-full px-2 py-3 text-sm hover:text-darkSushi dark:hover:text-sushi">
                         <Link href="/posts/create">
                           <a className="flex">
                             {active ? (
@@ -55,7 +55,7 @@ export const MenuItem = () => {
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <button className="group flex rounded-md items-center w-full px-2 py-2 text-sm hover:text-darkSushi dark:hover:text-sushi">
+                      <button className="group flex rounded-md items-center w-full px-2 py-3 text-sm hover:text-darkSushi dark:hover:text-sushi">
                         <Link href="/emojis/create">
                           <a className="flex">
                             {active ? (
@@ -75,8 +75,23 @@ export const MenuItem = () => {
                       </button>
                     )}
                   </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button className="group flex rounded-md items-center w-full px-2 py-3 text-sm hover:text-darkSushi dark:hover:text-sushi">
+                        <Link href="/">
+                          <a className="flex">
+                            <HeaderMenuIcon
+                              className="w-5 h-5 mr-2"
+                              aria-hidden="true"
+                            />
+                            Home
+                          </a>
+                        </Link>
+                      </button>
+                    )}
+                  </Menu.Item>
                 </div>
-                <div className="px-1 py-2">
+                <div className="px-1 py-3">
                   <Menu.Item>
                     <div className="flex justify-around items-center">
                       <button
@@ -84,7 +99,6 @@ export const MenuItem = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           setTheme("dark");
-                          // switchTheme();
                         }}
                       >
                         <img
@@ -99,7 +113,6 @@ export const MenuItem = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           setTheme("light");
-                          // switchTheme();
                         }}
                       >
                         <img
@@ -174,32 +187,6 @@ function ArchiveInactiveIcon(props) {
         d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1-10.2 8.5-11.5 23.6-3.1 33.8 30 36 74.1 56.6 120.9 56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8-10.1-8.4-25.3-7.1-33.8 3.1z"
       />
     </svg>
-    // <svg
-    //   {...props}
-    //   viewBox="0 0 20 20"
-    //   fill="none"
-    //   xmlns="http://www.w3.org/2000/svg"
-    // >
-    //   <rect
-    //     x="5"
-    //     y="8"
-    //     width="10"
-    //     height="8"
-    //     fill="#EDE9FE"
-    //     stroke="#52BBA4"
-    //     strokeWidth="2"
-    //   />
-    //   <rect
-    //     x="4"
-    //     y="4"
-    //     width="12"
-    //     height="4"
-    //     fill="#EDE9FE"
-    //     stroke="#52BBA4"
-    //     strokeWidth="2"
-    //   />
-    //   <path d="M8 12H12" stroke="#52BBA4" strokeWidth="2" />
-    // </svg>
   );
 }
 
@@ -221,32 +208,42 @@ function ArchiveActiveIcon(props) {
         d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"
       />
     </svg>
+  );
+}
+
+function HeaderMenuIcon(props) {
+  const { theme, setTheme } = useTheme();
+  return (
+    <svg
+      {...props}
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="fas"
+      data-icon="home"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 576 512"
+    >
+      <path
+        fill={theme === "light" ? "#52BBA4" : "#76FADD"}
+        d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+      />
+    </svg>
 
     // <svg
     //   {...props}
-    //   viewBox="0 0 20 20"
-    //   fill="none"
+    //   aria-hidden="true"
+    //   focusable="false"
+    //   data-prefix="fas"
+    //   data-icon="smile"
+    //   role="img"
     //   xmlns="http://www.w3.org/2000/svg"
+    //   viewBox="0 0 496 512"
     // >
-    //   <rect
-    //     x="5"
-    //     y="8"
-    //     width="10"
-    //     height="8"
-    //     fill="#52BBA4"
-    //     stroke="#76FADD"
-    //     strokeWidth="2"
+    //   <path
+    //     fill={theme === "light" ? "#52BBA4" : "#76FADD"}
+    //     d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"
     //   />
-    //   <rect
-    //     x="4"
-    //     y="4"
-    //     width="12"
-    //     height="4"
-    //     fill="#52BBA4"
-    //     stroke="#76FADD"
-    //     strokeWidth="2"
-    //   />
-    //   <path d="M8 12H12" stroke="#52BBA4" strokeWidth="2" />
     // </svg>
   );
 }

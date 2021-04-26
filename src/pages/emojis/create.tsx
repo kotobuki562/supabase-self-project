@@ -8,6 +8,7 @@ import { Button } from "../../components/atoms/Button/Button";
 
 const Create = () => {
   const [name, setName] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>("");
   const [imageFile, setImageFile] = useState<File>(null);
   const textInputs = [
     {
@@ -18,11 +19,6 @@ const Create = () => {
       placeholder: "登録するemojiの名前は？🤔",
     },
   ];
-
-  // const bucketName = "customEmoji";
-  // const url = `${supabase.storage.url}/object/${bucketName}/${imageFile.name}`;
-  // const headers = supabase.storage.headers;
-  // console.log(url, headers);
 
   const handleChange = (e: any) => {
     const file = e.target?.files[0];
@@ -37,25 +33,18 @@ const Create = () => {
 
   const uploadImageToSupabase = async (e): Promise<void> => {
     e.preventDefault();
-    // const bucketName = "customEmoji";
-    // const url = `${supabase.storage.url}/object/${bucketName}/${imageFile.name}`;
-    // const headers = supabase.storage.headers;
-    // const formData = new FormData();
-    // formData.append("file", imageFile);
-
-    // await axios.post(url, formData, {
-    //   headers,
-    // });
-
-    const { data, error } = await storage
-      .from("customEmoji")
-      .upload(imageFile.name, imageFile);
-    // .then((img) => {
-    //   console.log(img.data);
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // });
+    const { data: image, error: uploadError } = await storage
+      .from("avatars")
+      .upload(`customEmojis/${imageFile.name}`, imageFile);
+    // const { data: signedURL, error: signedError } = await storage
+    //   .from("avatars")
+    //   .createSignedUrl(`customEmojis/${imageFile.name}`, 1);
+    if (uploadError) {
+      throw uploadError;
+    }
+    if (image) {
+      console.log(image);
+    }
   };
 
   return (
