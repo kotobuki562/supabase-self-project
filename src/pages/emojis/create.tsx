@@ -20,6 +20,13 @@ const Create = () => {
     },
   ];
 
+  // const getImage = async () => {
+  //   const { signedURL, error } = await supabase.storage
+  //     .from("avatars")
+  //     .createSignedUrl("customEmojis/palm.png", 60);
+  //   console.log(signedURL, error);
+  // };
+
   const handleChange = (e: any) => {
     const file = e.target?.files[0];
     const reader = new FileReader();
@@ -33,17 +40,18 @@ const Create = () => {
 
   const uploadImageToSupabase = async (e): Promise<void> => {
     e.preventDefault();
-    const { data: image, error: uploadError } = await storage
-      .from("avatars")
-      .upload(`customEmojis/${imageFile.name}`, imageFile);
-    // const { data: signedURL, error: signedError } = await storage
-    //   .from("avatars")
-    //   .createSignedUrl(`customEmojis/${imageFile.name}`, 1);
-    if (uploadError) {
-      throw uploadError;
-    }
-    if (image) {
-      console.log(image);
+    try {
+      const expiresIn = 60 * 60 * 24 * 365 * 10;
+      const path = `${imageFile.name}`;
+
+      await storage.from("avatars").upload(path, imageFile);
+
+      const { data } = await supabase.storage
+        .from("avatars")
+        .createSignedUrl(path, expiresIn);
+      return console.log(data?.signedURL);
+    } catch (error) {
+      console.log(error);
     }
   };
 
