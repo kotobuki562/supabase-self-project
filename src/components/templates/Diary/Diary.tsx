@@ -6,6 +6,7 @@ import { Button } from "../../atoms/Button/Button";
 import { formatISO } from "date-fns";
 import { EmojiPicker } from "../../atoms/Emoji/EmojiPicker";
 import { Emoji } from "emoji-mart";
+import { useFetchAllData } from "../../../repositories/emojis/emoji";
 
 type DiaryInfo = {
   id: string;
@@ -40,12 +41,14 @@ const Diary: VFC<DiaryInfo> = (props) => {
     setEmoji(emojis);
   };
 
+  // const { data } = useFetchAllData();
+  // console.log(data);
+
   const updateEmojis = async () => {
     try {
       await supabase
         .from("emojis")
         .insert([{ list_id: props.id, emojiInfo: emojiInfo, createAt: today }]);
-      await router.reload();
     } catch (error) {
       console.log(error);
     }
@@ -53,6 +56,13 @@ const Diary: VFC<DiaryInfo> = (props) => {
 
   useEffect(() => {
     fetchData();
+    // async () => {
+    //   const { data: emojis, error } = await supabase
+    //     .from("emojis")
+    //     .select("*")
+    //     .eq("list_id", props.id);
+    //   setEmoji(emojis);
+    // };
   }, []);
   return (
     <div>

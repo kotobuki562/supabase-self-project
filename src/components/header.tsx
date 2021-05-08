@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useCallback } from "react";
 import { useTheme } from "next-themes";
 import { supabase } from "../util/supabase";
 import { icons } from "../../public/Icon";
@@ -7,7 +7,7 @@ import { Button } from "./atoms/Button/Button";
 import { MenuItem } from "../components/atoms/Menu/Menu";
 import Link from "next/link";
 
-export const Header = () => {
+export const Header = React.memo(() => {
   const user = supabase.auth.user();
   const router = useRouter();
   const { theme, setTheme } = useTheme();
@@ -53,6 +53,6 @@ export const Header = () => {
       </header>
     );
   }
-};
+});
 
 export default Header;
