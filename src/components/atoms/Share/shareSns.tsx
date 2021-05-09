@@ -9,7 +9,7 @@ import {
 } from "react-share";
 
 type Props = {
-  id?: string;
+  id?: number;
   title?: string;
 };
 

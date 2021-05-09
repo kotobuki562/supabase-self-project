@@ -7,9 +7,11 @@ import { formatISO } from "date-fns";
 import { EmojiPicker } from "../../atoms/Emoji/EmojiPicker";
 import { Emoji } from "emoji-mart";
 import { useFetchAllData } from "../../../repositories/emojis/emoji";
+import { useStore, addEmoji } from "../../../util/store";
+import { PostEmoji } from "../../atoms/Emoji/PostEmoji";
 
 type DiaryInfo = {
-  id: string;
+  id: number;
   name: string;
   emoji: string;
   title: string;
@@ -23,7 +25,7 @@ type DiaryInfo = {
 const Diary: VFC<DiaryInfo> = (props) => {
   const today = formatISO(new Date());
   const router = useRouter();
-  const [emoji, setEmoji] = useState([]);
+  const { emojis } = useStore(props.id);
   const [emojiInfo, setEmojiInfo] = useState({
     id: "",
     native: "",
@@ -33,37 +35,10 @@ const Diary: VFC<DiaryInfo> = (props) => {
     skin: null,
     imageUrl: "",
   });
-  const fetchData = async () => {
-    const { data: emojis, error } = await supabase
-      .from("emojis")
-      .select("*")
-      .eq("list_id", props.id);
-    setEmoji(emojis);
-  };
 
-  // const { data } = useFetchAllData();
-  // console.log(data);
+  // emojiPickerの値を入力されるたびにこのコンポーネントが再レンダリングされている
+  // console.log(emojiInfo, emojis);
 
-  const updateEmojis = async () => {
-    try {
-      await supabase
-        .from("emojis")
-        .insert([{ list_id: props.id, emojiInfo: emojiInfo, createAt: today }]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-    // async () => {
-    //   const { data: emojis, error } = await supabase
-    //     .from("emojis")
-    //     .select("*")
-    //     .eq("list_id", props.id);
-    //   setEmoji(emojis);
-    // };
-  }, []);
   return (
     <div>
       {props.category === "happy" ? (
@@ -140,34 +115,21 @@ const Diary: VFC<DiaryInfo> = (props) => {
             disabled={!emojiInfo.id}
             size="sm"
             onClick={() => {
-              updateEmojis();
+              addEmoji(props.id, emojiInfo, today);
             }}
             btnText="emojiを贈る"
           />
         </div>
         <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7">
-          {emoji.map((stamp) => {
+          {emojis.map((stamp) => {
             return (
-              <p className="flex flex-col items-center p-5 m-5" key={stamp.id}>
-                {stamp.emojiInfo.imageUrl ? (
-                  <div
-                    className="w-10 h-10"
-                    style={{
-                      backgroundImage: `url(${stamp.emojiInfo.imageUrl})`,
-                      backgroundSize: "contain",
-                    }}
-                  />
-                ) : null}
-                {stamp.emojiInfo.skin ? (
-                  <Emoji
-                    emoji={stamp.emojiInfo.id}
-                    size={35}
-                    skin={stamp.emojiInfo.skin}
-                  />
-                ) : (
-                  <Emoji emoji={stamp.emojiInfo.id} size={35} />
-                )}
-              </p>
+              <div key={stamp?.id}>
+                <PostEmoji
+                  id={stamp?.emojiInfo.id}
+                  skin={stamp?.emojiInfo?.skin}
+                  imageUrl={stamp?.emojiInfo?.imageUrl}
+                />
+              </div>
             );
           })}
         </div>

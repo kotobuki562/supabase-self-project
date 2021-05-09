@@ -1,7 +1,7 @@
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 import { useTheme } from "next-themes";
-import React, { VFC } from "react";
+import React, { VFC, useCallback, useMemo } from "react";
 
 type Props = {
   selectEmoji: any;
