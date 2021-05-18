@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Layout } from "../../components/layout";
 import { supabase } from "../../util/supabase";
-import { useRouter } from "next/router";
 import type { GetStaticPaths } from "next";
 import { format } from "date-fns";
 import Diary from "../../components/templates/Diary/Diary";
-// import { Button } from "../../components/atoms/Button/Button";
-import Loading from "../../components/atoms/Loading/Loading";
-import CustomEmoji from "../../models/customEmoji/customEmoji";
 import { getAllCustomEmojiData } from "../../repositories/customEmojis/customEmojis";
 
 export const getStaticPaths: GetStaticPaths<{
