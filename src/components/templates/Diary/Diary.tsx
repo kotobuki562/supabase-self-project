@@ -1,12 +1,8 @@
-import React, { VFC, useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import React, { VFC, useState } from "react";
 import { ShareSNS } from "../../atoms/Share/shareSns";
-import { supabase } from "../../../util/supabase";
 import { Button } from "../../atoms/Button/Button";
 import { formatISO } from "date-fns";
 import { EmojiPicker } from "../../atoms/Emoji/EmojiPicker";
-import { Emoji } from "emoji-mart";
-import { useFetchAllData } from "../../../repositories/emojis/emoji";
 import { useStore, addEmoji } from "../../../util/store";
 import { PostEmoji } from "../../atoms/Emoji/PostEmoji";
 
@@ -24,7 +20,6 @@ type DiaryInfo = {
 
 const Diary: VFC<DiaryInfo> = (props) => {
   const today = formatISO(new Date());
-  const router = useRouter();
   const { emojis } = useStore(props.id);
   const [emojiInfo, setEmojiInfo] = useState({
     id: "",
@@ -35,9 +30,6 @@ const Diary: VFC<DiaryInfo> = (props) => {
     skin: null,
     imageUrl: "",
   });
-
-  // emojiPickerの値を入力されるたびにこのコンポーネントが再レンダリングされている
-  // console.log(emojiInfo, emojis);
 
   return (
     <div>
@@ -116,6 +108,15 @@ const Diary: VFC<DiaryInfo> = (props) => {
             size="sm"
             onClick={() => {
               addEmoji(props.id, emojiInfo, today);
+              setEmojiInfo({
+                id: "",
+                native: "",
+                colons: "",
+                emotions: [""],
+                name: "",
+                skin: null,
+                imageUrl: "",
+              });
             }}
             btnText="emojiを贈る"
           />
